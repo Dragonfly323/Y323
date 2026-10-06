@@ -1,0 +1,8 @@
+[package]
+name    = "y323"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "y323"
+path = "src/main.rs"

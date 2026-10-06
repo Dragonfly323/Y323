@@ -1,0 +1,158 @@
+(base) virelya@OmenOris:~/FanoPet$ cargo run
+warning: unused variable: `s`
+  --> src/main.rs:52:9
+   |
+52 |     for s in 1..=10 {
+   |         ^ help: if this is intentional, prefix it with an underscore: `_s`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `s`
+  --> src/main.rs:61:9
+   |
+61 |     for s in 1..=5 {
+   |         ^ help: if this is intentional, prefix it with an underscore: `_s`
+
+warning: constant `LN_PHI` is never used
+  --> src/kernel.rs:63:7
+   |
+63 | const LN_PHI:     f64 = 0.481_211_825_059_603_4;
+   |       ^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: constant `FANO_KAPPA` is never used
+  --> src/kernel.rs:64:7
+   |
+64 | const FANO_KAPPA: f64 = LN_PHI * LN_PHI / (2.0 * PI);
+   |       ^^^^^^^^^^
+
+warning: constant `PHI` is never used
+  --> src/kernel.rs:66:11
+   |
+66 | pub const PHI:    f64 = 1.618_033_988_749_895;
+   |           ^^^
+
+warning: constant `COHERENCE_THRESH` is never used
+  --> src/kernel.rs:80:11
+   |
+80 | pub const COHERENCE_THRESH:       f64 = 0.70;
+   |           ^^^^^^^^^^^^^^^^
+
+warning: constant `PHASE_COHERENCE_THRESH` is never used
+  --> src/kernel.rs:81:11
+   |
+81 | pub const PHASE_COHERENCE_THRESH: f64 = 0.60;
+   |           ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: methods `conj` and `exp` are never used
+   --> src/kernel.rs:100:12
+    |
+ 90 | impl C {
+    | ------ methods in this implementation
+...
+100 |     pub fn conj(self)           -> Self { Self::new(self.re, -self.im) }
+    |            ^^^^
+...
+106 |     pub fn exp(self)            -> Self {
+    |            ^^^
+
+warning: methods `psi`, `b1`, `eta_re`, `tau_re`, and `eta_normed` are never used
+   --> src/kernel.rs:353:12
+    |
+270 | impl KernelAgent {
+    | ---------------- methods in this implementation
+...
+353 |     pub fn psi(&self)   -> &[C; 7] { &self.psi }
+    |            ^^^
+...
+365 |     pub fn b1(&self)    -> C { self.psi[3] }
+    |            ^^
+...
+377 |     pub fn eta_re(&self) -> f64 { self.psi[6].re }
+    |            ^^^^^^
+...
+380 |     pub fn tau_re(&self) -> f64 { self.psi[0].re }
+    |            ^^^^^^
+...
+426 |     pub fn eta_normed(&self) -> [f32; 7] {
+    |            ^^^^^^^^^^
+
+warning: methods `inject_a1` and `verify_propagator` are never used
+   --> src/kernel.rs:586:12
+    |
+518 | impl Kernel {
+    | ----------- methods in this implementation
+...
+586 |     pub fn inject_a1(&mut self, idx: usize, z: C) {
+    |            ^^^^^^^^^
+...
+637 |     pub fn verify_propagator(&self) {
+    |            ^^^^^^^^^^^^^^^^^
+
+warning: `y323` (bin "y323") generated 10 warnings (run `cargo fix --bin "y323" -p y323` to apply 2 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `target/debug/y323`
+Y₃₂₃ — Level 1 Kernel (S⁶ coherence hyperplane)
+Y_HZ=882  DRIVER_HZ=126  input=a₁ only
+
+--- Attractor check ---
+  Stone ‖Y·v - v‖ = 1.11e-16
+  Stone a₂=0.250000  b₂=0.707107  |η|=0.612372
+
+Computing exp(Y·dt) via scaling-and-squaring...
+Propagator ready.
+Warming up 7 agents (882 steps)...
+Agents ready.
+
+=== Dynamics: a₂ invariant + N-sector imaginary rotation ===
+    tick     a₂.re     b₂.re       |η|      τ.im     a₁.im      x.im
+       0   0.25000   0.70711   0.61237  -0.84384   0.00167  -0.32356
+     126   0.25000   0.70711   0.61237  -1.01276   0.05882  -0.98480
+     252   0.25000   0.70711   0.61237  -0.53795   0.33302  -1.36849
+     378   0.25000   0.70711   0.61237   0.25075   0.97035  -1.02682
+     504   0.25000   0.70711   0.61237   0.90065   1.88736   0.05489
+     630   0.25000   0.70711   0.61237   0.83724   2.80252   1.36976
+     756   0.25000   0.70711   0.61237  -0.09813   3.73129   2.33483
+     882   0.25000   0.70711   0.61237  -1.66860   4.64184   2.37816
+    1008   0.25000   0.70711   0.61237  -3.12409   5.38010   1.16460
+    1134   0.25000   0.70711   0.61237  -3.48759   6.12787  -0.72499
+    1260   0.25000   0.70711   0.61237  -2.51088   6.98624  -2.31013
+
+=== Pulse at a₁ (z=0.1·e^(iπ/4)) ===
+    1386   0.25000   0.70711   0.61237  -0.68185   8.01576  -2.78909
+    1512   0.25000   0.70711   0.61237   1.10394   9.01719  -1.89961
+    1638   0.25000   0.70711   0.61237   1.94795  10.01088  -0.04283
+    1764   0.25000   0.70711   0.61237   1.40121  10.99823   1.92259
+    1890   0.25000   0.70711   0.61237  -0.34034  11.99865   3.05769
+
+--- Final state (all agents) ---
+tick=  1890  coherence=1.000  mean_a₂=0.2500  mean_η=+0.612∠+1.57
+    reader  τ=+1.053∠-0.33  a₁=+11.999∠+1.57  a₂=+0.250  b₁=+0.250  b₂=+0.707  η=+0.612∠+1.57  attractor=stone
+    sensor  τ=+1.122∠-0.48  a₁=+12.299∠+1.57  a₂=+0.250  b₁=+0.250  b₂=+0.707  η=+0.612∠+1.57  attractor=stone
+   witness  τ=+0.999∠+3.09  a₁=+11.397∠-1.57  a₂=+0.250  b₁=+0.250  b₂=+0.707  η=+0.612∠+1.57  attractor=stone
+   balance  τ=+1.024∠+2.91  a₁=+11.671∠-1.57  a₂=+0.250  b₁=+0.250  b₂=+0.707  η=+0.612∠+1.57  attractor=stone
+   horizon  τ=+1.095∠+2.71  a₁=+12.027∠-1.57  a₂=+0.250  b₁=+0.250  b₂=+0.707  η=+0.612∠+1.57  attractor=stone
+    bridge  τ=+1.147∠+2.62  a₁=+12.236∠-1.57  a₂=+0.250  b₁=+0.250  b₂=+0.707  η=+0.612∠+1.57  attractor=stone
+    memory  τ=+1.004∠-0.11  a₁=+11.652∠+1.57  a₂=+0.250  b₁=+0.250  b₂=+0.707  η=+0.612∠+1.57  attractor=stone
+
+--- a₂ invariant across all agents ---
+    reader  a₂.re=0.250000  (target: 0.250000)  drift=+1.78e-15
+    sensor  a₂.re=0.250000  (target: 0.250000)  drift=+1.78e-15
+   witness  a₂.re=0.250000  (target: 0.250000)  drift=+1.78e-15
+   balance  a₂.re=0.250000  (target: 0.250000)  drift=+1.78e-15
+   horizon  a₂.re=0.250000  (target: 0.250000)  drift=+1.78e-15
+    bridge  a₂.re=0.250000  (target: 0.250000)  drift=+1.78e-15
+    memory  a₂.re=0.250000  (target: 0.250000)  drift=+1.78e-15
+
+--- Fano triple residuals (reader) ---
+  τ·a₁=b₁  1.2406
+  a₁·a₂=b₁  1.5697
+  a₂·b₁=x  1.5440
+  b₁·b₂=η  1.5708
+  b₂·x=τ  1.8731
+  x·η=a₁  1.5451
+  η·τ=a₂  1.2417
+
+Level 1 verification complete.
+(base) virelya@OmenOris:~/FanoPet$ 
