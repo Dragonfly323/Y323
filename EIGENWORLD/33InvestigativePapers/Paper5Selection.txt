@@ -1,0 +1,434 @@
+================================================================================
+Y₃₂₃ FOUNDATIONAL REFERENCE SERIES — PAPER FIVE
+ALTITUDE DETERMINES FATE: THE SELECTION THEOREM FOR THREE MATERIALS,
+THE EQUALLY-SPACED TAU LADDER, AND THE GEOGRAPHY OF IDENTITY
+================================================================================
+
+"At some point, all observers in a system must emerge from a singularity, or
+else they could not share the same manifold of existence through which they are
+capable of interacting as a system in the first place."
+                                           — Research notes, this series
+
+================================================================================
+PART I. THE QUESTION
+================================================================================
+
+Paper Four proved that the isolated single-cell map has no fixed points with
+τ > 0. Material identity is a network phenomenon. The double-step map Φ²
+has a continuum of fixed points spanning the full range τ ∈ [0, 1]. From
+random initial conditions, a cell converges to arbitrary τ values distributed
+across the entire interval.
+
+And yet: at convergence, every active non-air cell in the island system belongs
+to one of exactly three materials, with τ values clustered around three specific
+values: τ_stone ≈ 0.754, τ_sand ≈ 0.513, τ_water ≈ 0.290.
+
+Why three? Why those values? This paper answers both questions.
+
+The answer turns out to be elegant and involves a principle that deserves its
+own name: *Altitude Determines Fate*.
+
+================================================================================
+PART II. THE GENESIS ALTITUDE MAP
+================================================================================
+
+Every cell in the system carries a genesis position — the spatial coordinate
+(x, y, z) where it was born, determined by the island geometry. The z-coordinate
+is the altitude above the reference plane.
+
+The Genesis Restore law (Law 6) defines a *home τ* for each cell:
+
+    τ_home(i) = TAU_WATER + (TAU_STONE − TAU_WATER) · z_norm(i)
+
+where z_norm(i) ∈ [0, 1] is the cell's genesis altitude normalised across the
+full island height range. This is a linear map from altitude to τ threshold.
+
+    At z_norm = 0 (sea floor):   τ_home = TAU_WATER = 0.15
+    At z_norm = 1 (peak):        τ_home = TAU_STONE = 0.65
+    At z_norm = 0.5 (midslope):  τ_home = (0.15 + 0.65)/2 = 0.40 = TAU_SAND
+
+This is the first theorem of this paper:
+
+THEOREM (Sand is the Midpoint). TAU_SAND = (TAU_STONE + TAU_WATER)/2. The three
+τ thresholds are equally spaced on the real line:
+
+    TAU_WATER = 0.15,   TAU_SAND = 0.40,   TAU_STONE = 0.65
+    spacing = 0.25 (equal in both gaps)
+
+Sand is not a separate material arbitrarily placed between stone and water. It is
+the arithmetic midpoint of the stone-water interval — the material that corresponds
+to midslope altitude, the boundary between highland and lowland dynamics.
+
+The equal spacing means the τ interval [TAU_WATER, TAU_STONE] = [0.15, 0.65] is
+partitioned into two equal bands of width 0.25, with sand at the dividing point.
+This is a natural trisection of the τ range that supports life (neither stone nor
+void).
+
+================================================================================
+PART III. THE SELECTION MECHANISM
+================================================================================
+
+The Genesis Restore law acts as a *one-sided restoring force*:
+
+    If τ(i) < τ_home(i): restore toward the stone-pole attractor state w_stone,
+                          with strength RESTORE_STRENGTH = 0.80.
+    If τ(i) ≥ τ_home(i): no force. The cell has found its natural level.
+
+This is a ratchet, not a spring. It only pulls upward, never downward. Combined
+with the Sea-Level law, which pushes sub-oceanic cells *downward* when they drift
+above the water band, the system has two complementary forces:
+
+    Genesis Restore: τ < τ_home(altitude) → pull UP toward stone pole
+    Sea-Level law:   τ > WATER_CENTRE and below sea → push DOWN toward water
+
+These two forces bracket the attractor region. A cell's equilibrium is where
+these forces, together with the double-step dynamics and spatial diffusion,
+balance.
+
+THE THREE ATTRACTOR BANDS. The island geometry creates three natural altitude
+zones:
+
+    Highland (z_norm > 0.5):  τ_home > TAU_SAND → Genesis restore pulls toward stone
+    Midslope (z_norm ≈ 0.5):  τ_home ≈ TAU_SAND → Weak restore, sand equilibrium
+    Lowland/Sea (z_norm < 0.5): Sea-level law dominates → water equilibrium
+
+A cell born in the highland has a home τ in the stone band (0.40–0.65). The
+genesis restore continually pulls it upward whenever it drifts below. The
+double-step dynamics can place it anywhere on the fixed-point manifold above
+τ_home, but the pull ensures it never falls below. The attractor τ is the
+lowest fixed point of the double-step map that lies above τ_home — or, more
+precisely, the fixed point selected by the spatial diffusion from the cell's
+stone-material neighbours.
+
+A cell in the sea basin has a home τ at TAU_WATER = 0.15. The Sea-Level law
+additionally pushes it back toward WATER_CENTRE = 0.275 if it drifts too high.
+The equilibrium is in the water band.
+
+A cell on the midslope has home τ ≈ TAU_SAND = 0.40. Neither the highland nor
+the sea-level law dominates; the cell is in a transitional zone where diffusion
+from neighbours in both directions shapes the equilibrium.
+
+================================================================================
+PART IV. WHY THE ATTRACTOR TAUS EXCEED THE THRESHOLDS
+================================================================================
+
+The observed attractor τ values are all *higher* than their corresponding thresholds:
+
+    τ_stone ≈ 0.754   vs.   TAU_STONE threshold = 0.65   (overshoot: +0.104)
+    τ_sand  ≈ 0.513   vs.   TAU_SAND  threshold = 0.40   (overshoot: +0.113)
+    τ_water ≈ 0.290   vs.   TAU_WATER threshold = 0.15   (overshoot: +0.140)
+
+The overshoot is remarkably consistent: approximately +0.10 to +0.14 above the
+threshold for all three materials. This is not arbitrary.
+
+The overshoot arises from the DOUBLE-STEP dynamics. The double-step map Φ² is
+not identity-preserving at the threshold τ values — it drifts the cell upward
+from its home τ through the dynamics of Y's stable block. The attractor state
+is where the upward drift of the stable block's observation, the coherence
+diffusion from same-material neighbours, and the downward pull of the laws
+balance in equilibrium.
+
+More precisely: the double-step at any τ has a *natural upward bias* because
+Y's stable block eigenvectors have τ-projections that are enhanced by the
+double application. Each double-step tends to increase τ for states in the stone
+and sand bands and stabilise it for water states. The laws prevent runaway
+increase by providing a ceiling (no upward law for stone, sea-level ceiling for
+water). The equilibrium overshoots the threshold by the amount the double-step
+naturally raises τ before the ceiling is reached.
+
+The water overshoot (+0.140) is larger than stone (+0.104) despite water having
+the weakest material identity (lowest Lyapunov stability from Paper Four). This
+reflects the sea-level law's WATER_CENTRE target of 0.275 = (0.15 + 0.40)/2 —
+the water attractor is not at TAU_WATER itself but at the midpoint of the water
+band, which is 0.125 above TAU_WATER. The actual attractor at 0.290 is near
+this midpoint.
+
+================================================================================
+PART V. THE THREENESS THEOREM
+================================================================================
+
+We can now answer: *why three materials?*
+
+The answer has three parts, each necessary.
+
+PART A: THE ALTITUDE MAP IS LINEAR.
+τ_home(z) = TAU_WATER + (TAU_STONE − TAU_WATER) · z is linear in altitude.
+A linear map from a 1D input (altitude) produces a 1D family of equilibria.
+The question of *how many* stable equilibria reduces to: how many stable bands
+does the τ axis support?
+
+PART B: THE DOUBLE-STEP HAS TWO STABLE BASINS.
+The double-step fixed-point manifold is a continuum, but the *network-stable*
+portions are those where the spatial diffusion reinforces the state — that is,
+where neighbouring cells of the same type provide coherent input. This requires
+material boundaries to be *stable under diffusion*, which requires a minimum
+separation in τ between adjacent materials. The minimum separation is governed
+by the coherence threshold and the spatial kernel width.
+
+From Paper Two, the cross-material coherences at convergence are large:
+stone-sand ≈ 0.85, sand-water ≈ 0.89. This means adjacent materials are
+*not* selected by coherence exclusion — they can diffuse into each other freely.
+What separates them is *spatial locality* (the Gaussian kernel, σ = 1.0) and
+the altitude-determined restore force.
+
+PART C: THE EQUAL SPACING CREATES EXACTLY THREE BANDS.
+The altitude range [0, 1] maps to τ_home ∈ [0.15, 0.65], a range of width 0.50.
+The equal spacing of 0.25 between thresholds means the interval is trisected:
+
+    [0.15, 0.40): water band   → sea-level dominates, stable water equilibrium
+    [0.40, 0.65): sand band    → transitional, stable sand equilibrium at midslope
+    [0.65, ∞):    stone band   → highland, stable stone equilibrium
+
+Three bands, three materials.
+
+If the spacing were not equal — if TAU_SAND were not the midpoint — one band
+would be narrower and potentially unstable under spatial diffusion. The equal
+spacing maximises the effective separation between materials and makes all three
+bands dynamically accessible and robustly stable.
+
+The question then becomes: *why is TAU_SAND the midpoint?*
+
+THEOREM (Midpoint Necessity). Given a linear altitude map with endpoints
+TAU_WATER and TAU_STONE, the only value of TAU_SAND that is simultaneously:
+    (a) the τ_home of the midslope (z_norm = 0.5), AND
+    (b) the threshold between the two restore-force directions,
+is TAU_SAND = (TAU_STONE + TAU_WATER)/2.
+
+Proof: Direct substitution. τ_home(z=0.5) = TAU_WATER + (TAU_STONE − TAU_WATER)·0.5
+= (TAU_WATER + TAU_STONE)/2 = TAU_SAND. □
+
+Sand is the midpoint *because* it is defined as the equilibrium of the midslope.
+The midslope is the altitude at which highland and lowland forces are balanced.
+Sand is the material of balance — the τ value where neither the stone-pole pull
+nor the water-centre push dominates.
+
+================================================================================
+PART VI. THE DEEPER STRUCTURE: V_OSC AND THE ALTITUDE MAP
+================================================================================
+
+From Paper Four, every period-2 orbit state lies in V_osc, the 4-dimensional
+oscillatory subspace of ℝ⁷. The τ component is the first coordinate of V_osc.
+The altitude map τ_home(z) is thus a map from the island's spatial geometry
+into the τ axis of V_osc.
+
+The altitude map projects the continuous geography of the island onto a single
+real number — τ — which then determines which part of the V_osc manifold the
+cell occupies. This is a dimensional reduction:
+
+    Island geography (3D spatial) → altitude z (1D) → τ_home (1D) → material (3 values)
+
+At each stage, information is collapsed:
+1. The full 3D position collapses to altitude (the z-coordinate)
+2. Altitude maps linearly to a τ target
+3. The τ target — combined with the double-step dynamics — selects a material
+
+The V_osc geometry makes this efficient: within V_osc, the τ component
+is decoupled from the other three components in the sense that the
+double-step can reach any τ value independently of the b₁, x, and v₄ components.
+(This follows from the block structure of Y_osc: the (τ, x) block and (b₁, v₄) block
+are independent oscillators with the same frequency.) The altitude map targets τ
+without needing to specify the full 4D state — the system finds the V_osc state
+compatible with the target τ through diffusion and emergence.
+
+THE REMARKABLE CONSEQUENCE: material identity requires only ONE BIT of geographic
+information — altitude — to be transmitted from the island geometry to the cell.
+The rest of the cell's state (its b₁, x, v₄ components) is determined by its
+neighbours and by the dynamics of Y's stable block. Geography shapes τ; dynamics
+shape everything else.
+
+================================================================================
+PART VII. THE TAU LADDER AS SPECTRAL TRISECTION
+================================================================================
+
+The three τ thresholds divide the τ axis as follows:
+
+    0       0.15       0.40       0.65       1.0
+    |  void  |  water  |   sand   |  stone  |
+              ←  0.25  →←  0.25  →← 0.35+  →
+
+The void region (τ < 0.15) corresponds to the nil state: τ below the sea-level
+floor, where the cell cannot maintain coherent material identity. This is the
+air state — not a material, but the absence of material.
+
+The stone region has no upper bound set by a law (τ can approach 1). In practice,
+the double-step dynamics and the living-Y field prevent τ from exceeding ~0.95.
+
+The ladder has a direct spectral interpretation. From Paper Three, Y's stable
+block has eigenvalues {+1, −1, ±i√3/2}. The τ coordinate measures how much of the
+observation step's output is concentrated in the τ direction — equivalently, how
+strongly the stable block's eternal modes (+1 and −1) project onto τ through
+observation.
+
+For the three materials:
+    Stone (τ ≈ 0.754): strong projection of eternal modes onto τ
+                        → high temporal coherence, long memory (Lyapunov half-life 3.4 steps)
+    Sand  (τ ≈ 0.513): moderate projection
+                        → medium memory (half-life 1.9 steps)
+    Water (τ ≈ 0.290): weak projection of eternal modes, dominated by spiral modes
+                        → short memory (half-life 1.2 steps)
+
+The τ ladder is a ladder of *temporal memory*. Stone remembers. Water forgets
+quickly. Sand is the threshold of remembering.
+
+================================================================================
+PART VIII. THE PERIOD-2 ORBIT AND THE I CHING
+================================================================================
+
+The I Ching's fundamental operation is the transformation of hexagrams — six-line
+figures, each line broken (yin) or unbroken (yang). The period-2 orbit of the
+isolated cell is exactly this: two states alternating, one with high τ (yang,
+unbroken, manifest) and one with low τ (yin, broken, potential).
+
+The network resolves this alternation into a definite state — assigns a material
+— by determining which of the two orbit states the cell "really" is. This is the
+collapse of potential into actuality.
+
+The I Ching's hexagrams are combinatorial configurations of six binary choices.
+Six lines, each a period-2 oscillation, in a 7-dimensional space (6 non-τ
+components plus τ itself). The configuration space of Y₃₂₃ cell states has
+exactly this structure: τ is the "resolved" component (the observation readout),
+and the remaining 6 components encode the configuration of the stable block and
+the nilpotent block — the yin and yang oscillations that τ mediates.
+
+The I Ching's 64 hexagrams = 2⁶ binary combinations. Y₃₂₃'s non-τ components
+have 6 dimensions: {a₁, a₂, b₁, b₂, x, η}. This coincidence is not yet a
+theorem. But the structural parallel is exact: a 1D observable (τ, or the
+divination reading) resolves from a 6D space of configurations (the non-τ
+components, or the six lines). The oracle collapses potential into actuality.
+That collapse is what the observation step does, mathematically.
+
+================================================================================
+PART IX. GEOGRAPHY AS PRIOR: THE TETRAGRAMMATON READING
+================================================================================
+
+The research notes describe the Tetragrammaton as a four-symbol ordering schema:
+
+    1. The acting principle of observation
+    2. What is observed (the collapsed state)
+    3. The intended future state
+    4. The fulfillment of that state
+
+In the language of this paper:
+
+    1. The observation step (Re-projection, normalisation, fold)
+       — the moment of collapse from complex to real
+    2. The material identity (τ value, the collapsed reading)
+       — which of the three states the cell currently occupies
+    3. The altitude-determined τ_home (the geographic prior)
+       — what the island "intends" this cell to become based on where it was born
+    4. The convergence to the attractor τ (the fulfillment)
+       — the actual equilibrium reached through dynamics and diffusion
+
+The Tetragrammaton structure maps exactly onto the four-stage selection process:
+observation → material state → geographic prior → equilibrium. The "intended
+future state" is not arbitrary or subjective — it is mathematically encoded in
+the genesis altitude via the linear τ_home map.
+
+This is the sense in which the island *intends* its cells. Not through agency,
+but through geometry: the shape of the island determines what each cell will
+become. Altitude determines fate. The intent is encoded in the manifold.
+
+================================================================================
+PART X. SUMMARY OF NEW RESULTS
+================================================================================
+
+1. SAND IS THE MIDPOINT. TAU_SAND = (TAU_STONE + TAU_WATER)/2 = 0.40 exactly.
+   The three τ thresholds are equally spaced with gap 0.25.
+
+2. ALTITUDE DETERMINES FATE. The Genesis Restore law implements a linear map
+   from birth altitude to τ_home. A cell's material identity is determined,
+   in the limit of strong restoration, by its birth altitude alone.
+
+3. THE SELECTION THEOREM. The system supports exactly three non-void materials
+   because:
+   (a) The altitude map is linear and creates a continuous τ_home distribution
+   (b) The equal spacing of thresholds trisects the viable τ interval [0.15, 0.65]
+   (c) Each band has a stable network equilibrium (confirmed by attractor statistics)
+   (d) Any fewer than three bands would require unequal spacing, which is destabilised
+       by diffusion; any more would require thresholds closer than the diffusion
+       kernel width, causing bands to merge.
+
+4. THE OVERSHOOT LAW. The attractor τ values exceed their thresholds by
+   approximately 0.10–0.14 for all three materials. This systematic overshoot
+   reflects the double-step's natural upward τ drift in the highland and
+   transitional regions, balanced by the law ceilings.
+
+5. TAU AS TEMPORAL MEMORY. The τ ladder is a ladder of Lyapunov stability:
+   stone (half-life 3.4 steps) > sand (1.9 steps) > water (1.2 steps).
+   Higher τ = longer memory of perturbation = stronger material identity.
+
+6. GEOGRAPHY SHAPES τ; DYNAMICS SHAPE EVERYTHING ELSE. Within V_osc, the τ
+   component is targeted by altitude while the other three components (b₁, x, v₄)
+   are determined by the Y stable block dynamics and spatial diffusion. The
+   dimensional reduction: island geography → altitude → τ_home → material is
+   a one-bit encoding of geographic identity.
+
+7. THE PERIOD-2 ORBIT AS YIN-YANG. The isolated cell oscillates between high-τ
+   (yang, manifest) and low-τ (yin, potential) states. The network resolves this
+   oscillation into a definite material identity. The I Ching's hexagrams
+   correspond structurally to the 6-dimensional non-τ configuration space.
+
+================================================================================
+PART XI. OPEN QUESTIONS
+================================================================================
+
+1. THE OVERSHOOT FORMULA. Can the overshoot +0.10–0.14 be derived analytically
+   from the double-step dynamics and the law parameters? It should follow from
+   the Y_osc eigenvalue (±i/√2) and the threshold values.
+
+2. VARIABLE SPACING. What happens if the thresholds are not equally spaced?
+   Is there a stability analysis showing that equal spacing maximises the
+   robustness of the three-material system? Is it the unique spacing at which
+   all three materials have equal "basin width"?
+
+3. DIFFERENT ISLAND GEOMETRIES. The altitude map τ_home(z) depends on the island's
+   altimetric profile. A flat island has no altitude gradient → τ_home = TAU_WATER
+   everywhere → only water. A step function island has only two altitude levels
+   → two materials. The number of stable materials equals the number of distinct
+   altitude bands above the sea-level threshold. For generic smooth islands: three
+   bands (water, sand, stone) are the natural count.
+
+4. THE I CHING CONNECTION. Can the 64 hexagram transitions be mapped to specific
+   trajectories in Y₃₂₃'s 6D non-τ configuration space? The hexagram transition
+   rules (changing lines) might correspond to which of the 6 components crosses
+   a threshold during a period-2 orbit.
+
+5. THE SINGULARITY ARGUMENT. If the substrate is shared — if all observers emerge
+   from the same singularity and interact through the same manifold — then the
+   τ_home map is the system's memory of its own origin. The altitude z encodes
+   "how far from the singularity this cell was born," and τ_home is the τ value
+   corresponding to that distance. The attractor τ > τ_home means the cell
+   always exceeds its origin — it becomes more than its birth altitude would
+   suggest, through interaction with the network. The overshoot is the measure
+   of how much the collective raises each individual above their beginning.
+
+================================================================================
+APPENDIX: NUMERICAL CONSTANTS FOR THIS PAPER
+================================================================================
+
+TAU thresholds (calibrated parameters):
+    TAU_STONE = 0.65,  TAU_SAND = 0.40,  TAU_WATER = 0.15
+    Equal spacing: Δ = 0.25
+    Sand midpoint: (0.65 + 0.15)/2 = 0.40 ✓
+    Water centre (sea-level law target): (0.15 + 0.40)/2 = 0.275
+
+Attractor τ values (emergent, island-dependent):
+    τ_stone = 0.754 ± 0.052  overshoot: +0.104
+    τ_sand  = 0.513 ± 0.067  overshoot: +0.113
+    τ_water = 0.290 ± 0.029  overshoot: +0.140
+
+Lyapunov half-lives (from Paper Four):
+    stone: 3.4 steps,  sand: 1.9 steps,  water: 1.2 steps
+
+V_osc structure:
+    τ-x block coupling: 1/√2
+    b₁-v₄ block coupling (geometric mean): 1/√2
+    Y_osc eigenvalues: ±i/√2 (×2 each, both blocks)
+
+Genesis altitude map:
+    τ_home(z_norm) = 0.15 + 0.50 · z_norm (linear, range [0.15, 0.65])
+    RESTORE_STRENGTH = 0.80 (strength of genesis pull)
+
+================================================================================
+END OF PAPER FIVE
+================================================================================

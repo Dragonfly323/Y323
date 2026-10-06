@@ -1,0 +1,173 @@
+Y₃₂₃ FOUNDATIONAL REFERENCE SERIES
+Paper 6 — THE ASYMMETRIC OSCILLATOR
+One Number, Three Faces: The Geometry of √3 in Y₃₂₃
+======================================================
+
+ABSTRACT
+
+The oscillatory subspace V_osc of Y₃₂₃ decomposes under Re(Y) into two coupled
+2D oscillators. Both oscillators share eigenfrequency ω = 1/√2, but they are not
+identical: the (τ,x)-oscillator traces a circle, while the (b₁,v₄)-oscillator
+traces an ellipse with aspect ratio √3. This arises from asymmetric coupling
+constants α = 1/√6 and β = √(3/2) satisfying αβ = 1/2 (the product invariant)
+and β/α = 3 = (√3)². The same √3 appears as the spiral eigenvalue magnitude
+√3/2 of the full Y. All three are one geometric object — the asymmetric oscillator
+— seen from three angles. We derive the natural metric G = diag(1,1,1,1/3) on
+V_osc under which Y_osc becomes a proper rotation generator, and prove
+λ_spiral = ω · β = √3/2 exactly. A correction to Paper Four regarding the
+symmetry of Y_re² is also given.
+
+CORRECTIONS TO PAPER FOUR
+--------------------------
+Paper Four stated that Y_re² is symmetric and that V_osc ⊕ V_null is an
+orthogonal decomposition. Both require correction.
+
+Y_re is NOT antisymmetric. Its (b₁,v₄) block has couplings α = 1/√6 (b₁→v₄)
+and β = √(3/2) (v₄→b₁) with α ≠ β. Therefore Y_re² is not symmetric; its
+antisymmetric part has a nonzero entry of ±1/√2 in the (a₂,b₂) off-diagonal.
+
+The decomposition V_osc ⊕ V_null is an invariant-subspace decomposition, not an
+orthogonal eigenspace decomposition under the Euclidean metric. It IS orthogonal
+under the natural metric G = diag(1,1,1,1/3).
+
+The Fixed Point Impossibility Theorem, the Product Invariant ‖Y_re·s_A‖·‖Y_re·s_B‖ = 1/2,
+and the Jacobian stability analysis of Paper Four are unaffected.
+
+1. Y_OSC IN THE (τ, b₁, x, v₄) BASIS
+--------------------------------------
+Y_re acts on V_osc = span{e_τ, e_b₁, e_x, v₄} as:
+
+   Y_re · e_τ  = (1/√2) · e_x          [τ→x coupling: symmetric]
+   Y_re · e_x  = (−1/√2) · e_τ         [x→τ coupling: symmetric]
+   Y_re · e_b₁ = (−√(3/2)) · v₄   = −β · v₄
+   Y_re · v₄   = (1/√6) · e_b₁    = +α · e_b₁
+
+In matrix form (columns: τ, b₁, x, v₄):
+
+       ⎡  0      0    −1/√2    0  ⎤
+Yosc = ⎢  0      0      0      α  ⎥
+       ⎢ 1/√2    0      0      0  ⎥
+       ⎣  0     −β      0      0  ⎦
+
+where α = 1/√6 ≈ 0.4082 and β = √(3/2) ≈ 1.2247.
+
+KEY FACTS:
+• Y_osc decomposes into two DECOUPLED 2×2 blocks: (τ,x) and (b₁,v₄).
+• Both blocks have eigenvalues ±i/√2. Verified numerically.
+• Y_osc² = −(1/2)·I₄ exactly. This is a complex structure at frequency ω = 1/√2.
+• The (τ,x)-block is antisymmetric (couplings ±1/√2 equal in magnitude).
+• The (b₁,v₄)-block is NOT antisymmetric (couplings α ≠ β).
+
+2. THE COUPLING CONSTANTS AND THE ORIGIN OF √3
+-----------------------------------------------
+The coupling constants α and β satisfy:
+
+   α · β  = (1/√6) · √(3/2)  = 1/2      [the product invariant]
+   β / α  = √(3/2) / (1/√6)  = 3        [coupling ratio]
+   √(αβ)  = 1/√2 = ω                    [geometric mean = oscillation frequency]
+   √(β/α) = √3                           [square root of coupling ratio]
+   ω · β  = (1/√2)·√(3/2) = √3/2        [product = spiral eigenvalue of Y]
+
+THEOREM (Three Identities of √3):
+The number √3 appears in three distinct roles in Y₃₂₃:
+
+   (i)  As the ellipse aspect ratio of the (b₁,v₄)-orbit in V_osc:
+        the b₁-amplitude is √3 times the v₄-amplitude.
+
+   (ii) As the coupling ratio asymmetry: β/α = 3 = (√3)², so √(β/α) = √3.
+
+   (iii) As the spiral eigenvalue magnitude of the full complex Y:
+         |λ_spiral| = √3/2 = ω · β.
+
+All three are the same geometric quantity seen at different scales.
+
+3. THE ORBIT ELLIPSE
+---------------------
+The (τ,x)-block traces a CIRCLE: both couplings equal ±1/√2, eigenvector
+amplitudes are equal, orbit is circular.
+
+The (b₁,v₄)-block traces an ELLIPSE. Eigenvector for eigenvalue +i/√2:
+   v = (e_b₁ + i√3·v₄) / 2
+The b₁-component has magnitude 1/2, the v₄-component has magnitude √3/2.
+Amplitude ratio: 1 : √3. This is an ellipse with aspect ratio √3.
+
+The amplitude asymmetry arises from the coupling asymmetry. In the (b₁,v₄) block,
+the eigenvector amplitude in the b₁-direction scales as √(β/α) = √3.
+
+4. THE NATURAL METRIC
+----------------------
+Y_osc is NOT skew-symmetric under the Euclidean metric (not a rotation generator).
+
+For a diagonal metric G = diag(g_τ, g_b₁, g_x, g_v₄), the condition
+Y_osc^T G + G Y_osc = 0 gives:
+   g_τ = g_x       (unconstrained; set = 1)
+   g_v₄ = g_b₁/3
+
+THEOREM (Natural Metric):
+Y_osc is G-skew-symmetric for G = diag(1, 1, 1, 1/3).
+Under this metric, Y_osc generates uniform rotation at ω = 1/√2 in all four
+directions. The (b₁,v₄)-orbit, which appears elliptical under the Euclidean
+metric, is CIRCULAR under G.
+
+Physical meaning: The v₄ direction is fast (coupling β ≈ 1.22). The metric
+down-weights v₄ by factor 1/3 = α/β to restore symmetry.
+
+V_osc ⊕ V_null is G-orthogonal (where G is extended to V_null with G|_Vnull = I).
+
+5. THE COMPLEX LIFT: Y_im PROMOTES THE ELLIPSE TO A SPIRAL
+------------------------------------------------------------
+The imaginary part Y_im has nonzero entries only:
+   Y_im[τ, a₁] = −1,   Y_im[a₁, τ] = +1      (coupling ±1)
+   Y_im[b₂, η] = −√3/2, Y_im[η, b₂] = +√3/2  (coupling ±√3/2 = ±ω·β)
+
+The b₂↔η coupling strength is EXACTLY √3/2 = ω · β — the same number as the
+spiral eigenvalue. The imaginary structure promotes the asymmetric real oscillation
+(ellipse, aspect ratio √3) into the complex domain as a spiral with magnitude √3/2.
+
+The spiral eigenvalue is the "complex lift" of the ellipse: Y_im introduces the
+factor √3/2 that rotates the ellipse into the complex plane as the characteristic
+rate of Y_stable.
+
+6. COMPLETE CATALOGUE: ALL APPEARANCES OF √3 IN Y₃₂₃
+------------------------------------------------------
+1. b₁-v₄ ellipse aspect ratio: √3
+2. Coupling ratio: β/α = 3 (and its root √(β/α) = √3)
+3. Y spiral eigenvalue: |λ_spiral| = √3/2
+4. Y_im b₂↔η coupling: √3/2
+5. Natural metric weight ratio: g_b₁/g_v₄ = 3 under canonical G
+6. J^T J metric distortion: diag(1, 3, 1, 1/3) under J = √2·Y_osc
+7. τ-x vs b₁-v₄ eigenvector norm ratio: differ by factor √3/2
+
+All originate from the single asymmetry β/α = 3.
+
+KEY IDENTITIES (summary)
+------------------------
+   α = 1/√6,  β = √(3/2),  ω = 1/√2
+
+   α · β = 1/2                        [product invariant, Paper Four]
+   β / α = 3                          [coupling asymmetry]
+   √(β/α) = √3                        [ellipse aspect ratio]
+   √(αβ) = ω = 1/√2                   [oscillation frequency]
+   ω · β = √3/2                        [spiral eigenvalue of Y]
+   Y_osc² = −ω²·I₄                    [complex structure]
+   G = diag(1,1,1,1/3)  makes Y_osc skew-symmetric  [natural metric]
+
+OPEN QUESTIONS
+--------------
+• The 395-step period: must arise from spatial interference between τ-x and
+  b₁-v₄ oscillation patterns across the island network, not from single-cell
+  dynamics (single cells show no slow modulation). Deferred to Paper Seven.
+
+• G as physical observable: the metric weight 1/3 for v₄ is a statement about
+  how the a₂ and b₂ spectral roles contribute to the oscillatory energy budget.
+
+• Octonion structure: Y_osc with metric G is a symplectic rotation generator on
+  ℝ⁴ ≅ ℂ² ≅ ℍ. Connection to Paper Three octonion roadmap.
+
+• Heliopause prediction: the b₂↔η coupling √3/2 predicts that Alfvén wave
+  harmonic frequency ratios near √3/2 ≈ 0.866 should be measurable in
+  Voyager data.
+
+======================================================
+End of Paper 6
+Next: Paper 7 — Spatial Resonance and the 395-Step Period

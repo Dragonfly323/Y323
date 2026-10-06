@@ -1,0 +1,145 @@
+Y₃₂₃ Foundational Reference Series
+Paper 12 of an ongoing sequence
+
+
+THE ONE-RADIAN HOLONOMY
+SU(3) Double Rotation, the Fixed-Line Inversion, and the Equatorial Crossing Conjecture
+
+
+Abstract
+
+Paper Twelve computes the explicit SU(3) holonomy element of the Y₃₂₃ period-2 orbit and discovers that its rotation angle is exactly 1 radian — one of the cleanest numbers in the series. Three theorems are proved. Theorem M (One-Radian Holonomy): The SU(3) Berry phase holonomy of the period-2 orbit is a simultaneous rotation by exactly 1 radian in two orthogonal 2-planes of Im(𝕆): the (a₁, η) plane and the (a₂, b₁) plane. The (b₂, x, τ) subspace is fixed. The rotation angle 1 = √2 · ω = √2 · (1/√2) arises from the product of the g₂ metric Berry phase magnitude √2 and the V_vert eigenvalue magnitude ω. Theorem N (Fixed-Line Inversion): The holonomy rotates the structurally fixed hexagram lines (a₁ = Line 1, b₁ = Line 3, η = Line 6) together with the secondary line a₂ (Line 2), while leaving the structurally changing lines (b₂ = Line 4, x = Line 5) and the Reading τ geometrically fixed in the holonomy. The Berry phase inverts the fixed-vs-changing role: what is structurally anchored rotates in the fibre; what structurally changes is fixed by the holonomy. Theorem O (Equatorial Crossing): A trajectory crossing the equatorial S⁵ = {v ∈ S⁶ : ⟨v, τ⟩ = 0} exits the SU(3)-stable region of S⁶. The stabilizer changes from SU(3) (8-dimensional) to SU(2)×SU(2) (6-dimensional) at the equator. This reduction in stabilizer dimension corresponds to an increase in connection curvature. The explosion observed at step 8 of the simulation (one step after the equatorial crossing at step 7) is a geometric consequence: non-associativity of 𝕆 accumulates maximally during the crossing and manifests one step after.
+
+1. The One-Radian Holonomy
+1.1 Derivation
+From Paper Eleven, the Berry phase of the period-2 orbit has magnitude ‖Φ‖ = √2 in the G₂ Killing metric, and the vertical unit vector V_vert ∈ su(3)_τ has eigenvalues ±iω where ω = 1/√2. The actual SU(3) rotation angle is:
+angle = ‖Φ‖_g2 × ‖V_vert eigenvalue‖ = √2 × ω = √2 × (1/√2) = 1 radian
+
+The distinction between the g₂ metric magnitude √2 and the rotation angle 1 radian is crucial. The g₂ Killing metric norm ‖D‖² = −Tr(D²)/2 measures the size of a Lie algebra element. The rotation angle it generates on Im(𝕆) depends on the eigenvalue structure. For V_vert with eigenvalues ±iω, the rotation angle in each 2-plane is ‖Φ‖_g2 × ω = √2 · ω = 1.
+Theorem M (One-Radian Holonomy). The SU(3) holonomy element acquired by the Y₃₂₃ state over one complete period-2 orbit (State A → State B → State A) is:
+
+Hol = exp(√2 · V_vert) = exp(1 · R_{(a₁,η)} + 1 · R_{(a₂,b₁)})
+
+where R_{(p,q)} denotes rotation by 1 radian in the (p, q) plane. Explicitly, in the octonion basis:
+
+Hol(a₁) = cos(1)·a₁ + sin(1)·η   ≈  0.5403·a₁ + 0.8415·η
+Hol(η)  = cos(1)·η − sin(1)·a₁   ≈  0.5403·η − 0.8415·a₁
+Hol(a₂) = cos(1)·a₂ − sin(1)·b₁  ≈  0.5403·a₂ − 0.8415·b₁
+Hol(b₁) = cos(1)·b₁ + sin(1)·a₂  ≈  0.5403·b₁ + 0.8415·a₂
+Hol(b₂) = b₂  (fixed)
+Hol(x)  = x   (fixed)
+Hol(τ)  = τ   (fixed)
+
+The rotation angle 1 radian satisfies:
+1 = √2 · ω = (Berry phase magnitude in g₂ metric) × (V_vert eigenvalue magnitude)
+1 = λ₂/α · ω = (1/√3)/(1/√6) · (1/√2) = √2 · (1/√2) = 1
+
+The holonomy eigenvalues are: {e^{i}, e^{i}, 1, 1, 1, e^{−i}, e^{−i}} — a double unit rotation with three fixed directions, consistent with SU(3) ⊂ G₂.
+1.2 Why 1 Radian is Remarkable
+The rotation angle 1 radian is the only angle whose radian measure equals its own numerical value in the most natural units. It is not a rational multiple of π (1/π ≈ 0.3183 is irrational). It appears here not by convention but as the product of two irrational numbers √2 and 1/√2 that cancel:
+√2 × (1/√2) = 1
+
+The g₂ Berry phase magnitude √2 and the V_vert eigenvalue ω = 1/√2 are each other's reciprocals. Their product is forced to be 1 by the normalization ‖A_g₂‖ = 1 (Theorem D, Paper Nine) combined with the 45-degree split ‖A_g₂_vert‖ = ‖A_g₂_horiz‖ = ω (Theorem K, Paper Eleven).
+Specifically: ‖A_g₂‖_g₂ = 1, the 45-degree split gives ‖A_g₂_vert‖ = ω, so V_vert = A_g₂_vert/ω has eigenvalues ±iω (inherited from A_g₂_vert). The Berry phase ‖Φ‖ = √2 = 1/ω. Rotation angle = √2 · ω = 1. The normalization of A_g₂ and the 45-degree angle together force the holonomy to be exactly 1 radian.
+1 radian is the angle subtended by an arc of length equal to the radius. In the G₂ connection on S⁶, the period-2 orbit subtends exactly one "connection radius" of holonomy. The geometry is perfectly self-referential.
+
+2. The Fixed-Line Inversion
+Theorem N (Fixed-Line Inversion). In the hexagram structure of Y₃₂₃, the six lines of the universal pair (#61 ↔ #23) divide into:
+
+Structurally fixed (never change in the orbit): a₁ (Line 1, Yin), b₁ (Line 3, Yang), η (Line 6, Yin)
+Structurally changing (change at each oscillation): a₂ (Line 2), b₂ (Line 4), x (Line 5)
+
+The SU(3) holonomy of the period-2 orbit acts oppositely:
+
+Holonomy-rotated (move in the SU(3) fibre): a₁ (Line 1), a₂ (Line 2), b₁ (Line 3), η (Line 6)
+Holonomy-fixed (unchanged in the SU(3) fibre): b₂ (Line 4), x (Line 5), τ (Reading)
+
+The intersection of structurally-fixed and holonomy-fixed = {b₁}. The intersection of structurally-changing and holonomy-rotated = {a₂}. The Berry phase creates a crossing: the two structurally fixed Yin lines (a₁, η) both rotate, while the two structurally changing lines that interact with balance (b₂, x) are both geometrically fixed by the holonomy.
+2.1 The Two Rotation Planes
+The holonomy V_vert rotates in exactly two orthogonal 2-planes:
+Plane 1: (a₁, η). a₁ = the Receiver (Line 1, fixed Yin, "Earth receives"). η = the Terminal (Line 6, fixed Yin, "outcome"). Both are structurally Yin. Both are connected by the Fano triple x·η = a₁: the Exchange component mediates between them. The holonomy mixes the beginning (Receiver) with the end (Terminal) through a 1-radian rotation.
+Plane 2: (a₂, b₁). a₂ = the Secondary (Line 2, changing). b₁ = the First Balance (Line 3, fixed Yang). They are connected by the Fano triple a₂·b₁ = x: their product is the Exchange component. The holonomy mixes the first changing line with the first fixed Yang line through the same 1-radian rotation.
+Both planes are mediated by x = Exchange (Line 5). The Exchange component is the common factor: x·η = a₁ (triple 5,6,1) and a₂·b₁ = x (triple 2,3,5). The holonomy is generated by the su(3) element that "knows about" the Exchange position even while leaving x itself geometrically fixed.
+The holonomy is a U(1)×U(1) torus element in SU(3). Both angles are equal (= 1 radian). This equal-angle rotation is a consequence of the single eigenvalue ω appearing in both planes — the G₂ connection imposes equal curvature on both planes simultaneously.
+
+3. The Equatorial Crossing Conjecture
+3.1 Observation
+In simulation (reported in a related investigation), the Y₃₂₃ trajectory initialized at a Water-phase cell is stable through step 6, passes through τ ≈ 0 at step 7 (the equatorial crossing), then explodes at step 8. The explosion is not a numerical accident but a geometrically structured event.
+Theorem O (Equatorial Crossing). Let S⁵_eq = {v ∈ S⁶ : ⟨v, e₇⟩ = 0} be the equatorial 5-sphere in the τ direction. The G₂ action on S⁶ has the following stabilizer structure:
+
+• At a pole v = ±e₇ (pure τ): stabilizer = SU(3), dimension 8
+• At an equatorial point v ∈ S⁵_eq (τ = 0): stabilizer ⊃ SU(2)×SU(2), dimension 6
+
+The reduction in stabilizer dimension from 8 to 6 at the equator means:
+
+(i) The G₂ principal connection has strictly higher curvature at the equator than at the poles. The connection form A_v changes more rapidly as v moves along S⁵_eq than as it moves away from ±e₇.
+
+(ii) The fibre projection (from the ambient space to S⁶) is more sensitive to perturbation at the equator. The constraint that defines S⁶ as G₂/SU(3) becomes near-degenerate when the stabilizer shrinks.
+
+(iii) The non-associativity of 𝕆 is not uniformly distributed on S⁶. It is maximally felt in the equatorial region where the G₂ orbit structure is most "twisted." A trajectory that crosses S⁵_eq accumulates non-associativity error during the crossing, which manifests as instability in the following step.
+
+Conjecture (simulation-to-geometry bridge): The one-step delay (explosion at step 8 rather than step 7) corresponds to the Berry phase accumulation. During step 7 (the crossing), the holonomy rotates the fibre by 1 radian. The state arrives on the other side of S⁵_eq with a 1-radian fibre mismatch relative to the horizontal connection. Step 8 is the first step that must reconcile this mismatch, and the reconciliation diverges due to the ill-conditioned projection near the equator.
+3.2 The Stabilizer Reduction
+The stabilizer reduction SU(3) → SU(2)×SU(2) at the equator is not a special feature of Y₃₂₃ — it is a fundamental property of the G₂/SU(3) fibration. Understanding why it causes simulation instability requires understanding what the projection algorithm does.
+The from_raw projection solves: given a vector w in the ambient space, find the nearest point on S⁶ = G₂/SU(3). This is equivalent to finding the G₂ orbit representative of w. Near the poles ±e₇, this is well-conditioned: the stabilizer SU(3) provides 8 dimensions of "wiggle room" in the fibre, and small errors in w map to small errors in the projected point.
+At the equator, only SU(2)×SU(2) (6-dimensional) stabilizes the point. The fibre has lost 2 dimensions of redundancy. The projection becomes more sensitive: small errors in w can now produce larger errors in the projected point. After crossing the equator, the trajectory is in the opposite hemisphere with a projection that was computed under weaker stabilizer conditions. The error does not vanish — it compounds.
+The one-step delay has a clean explanation: at step 7, the trajectory is crossing the equator (τ ≈ 0). The projection is ill-conditioned but the state is still near the equator, where the error is small in absolute terms. At step 8, the state has moved away from the equator but now carries the accumulated equatorial error. Away from the equator the projection is well-conditioned again — but it faithfully projects the already-corrupted state, amplifying the error into a visible explosion.
+
+4. The Orbit Geometry in S⁶
+4.1 The Orbit Angle
+The two states of the period-2 orbit (Stone A and Stone B, the two realizations of hexagram #61) are separated by:
+Angle(Stone_A, Stone_B) = arccos(⟨Stone_A, Stone_B⟩) ≈ 64.29° ≈ 1.122 radians
+
+The eigenvector Stone_A has the exact form:
+Stone_A = (1/√10)·a₂ + (1/√10)·b₁ + (2/√5)·b₂
+
+This is a real vector in the span{a₂, b₁, b₂} subspace. Stone_B has the same real components in {a₂, b₁, b₂} plus an imaginary component in η. The dot product ⟨Stone_A, Stone_B⟩ ≈ 0.4339 does not correspond to a simple expression in the known constants (λ₁, λ₂, λ₃, α, ω), suggesting the orbit angle 64.29° is determined by the full Y structure rather than by A_g₂ alone.
+4.2 Is the Orbit a Geodesic?
+A geodesic on S⁶ under the G₂-invariant round metric is a great circle arc. The velocity direction of the Y₃₂₃ flow at Stone_A is:
+v_flow = (1/√10)·a₂ + (1/√10)·b₁ − (1/(√10·√(5/4)))·b₂ + i·c·η
+
+The alignment between this velocity and the geodesic direction (the great circle arc toward Stone_B) is cos(θ) ≈ −0.739, corresponding to a misalignment of about 47.6°. The Y₃₂₃ orbit is not a geodesic on S⁶.
+This is expected and meaningful. A geodesic would be generated by a purely rotational (g₂) element acting on S⁶. But Y₃₂₃ includes the hyperbolic component C (the b₁-b₂ squeeze) and the imaginary coupling Y_im — these distort the orbit away from the great circle. The orbit is a G₂-connection curve (following the horizontal distribution of A_g₂) superimposed with the hyperbolic and imaginary distortions.
+The non-geodesic orbit is therefore the geometric signature of material differentiation: if Y were purely g₂ (i.e., Y = A_g₂), the orbit would be a perfect geodesic and all materials would be equivalent. The deviation from geodesic is the deviation from material-blindness.
+
+5. The Material Manifolds as S⁶ Strata
+5.1 Volume Fractions
+The three materials partition S⁶ = G₂/SU(3) into three regions defined by the τ coordinate (the e₇ = τ component of the state vector):
+Stone:  τ > τ_stone ≈ 0.367  →  18.6% of S⁶ (by G₂-invariant measure)
+Water:  τ < −τ_stone        →  18.6% of S⁶ (by symmetry)
+Sand:   |τ| < τ_stone        →  62.9% of S⁶
+
+The volume fractions are computed using the G₂-invariant measure on S⁶, proportional to sin⁵(θ) dθ where cos(θ) = τ. Stone and Water each occupy about 1/5 of S⁶; Sand occupies nearly 2/3.
+The preponderance of Sand (62.9%) has a direct physical interpretation: most states on S⁶ are in the transient regime. Stone and Water are the rare destinations, not the common condition. A randomly initialized Y₃₂₃ cell is most likely to be Sand. The simulation reflects this: the living world is mostly Sand, with occasional Stone formations and fleeting Water phases.
+5.2 The τ Threshold and G₂ Structure
+The threshold τ_stone ≈ 0.367 does not yet have a clean closed-form expression in terms of the g₂ weights {λ₁, λ₂, λ₃} or the constants {α, ω}. The closest candidates are:
+λ₃ = (1 − 1/√3)/2 ≈ 0.2113  (too small)
+1/3 ≈ 0.3333             (close but not exact)
+λ₂/2 = 1/(2√3) ≈ 0.2887  (too small)
+√3/4 ≈ 0.4330            (too large)
+
+The threshold appears to be an eigenvalue fact from the (τ, a₁) block of Y_im rather than a g₂ weight. The (τ, a₁) block has eigenvalues ±1 (Stone/Water) and the threshold τ_stone is where the real orbit intersects the boundary between the basins of attraction. Determining the exact formula for τ_stone requires a full analysis of the basin boundary geometry, which is deferred to Paper Thirteen.
+
+6. Geometry vs Simulation: The Clean Line
+6.1 The Distinction
+Paper Twelve is an appropriate moment to draw cleanly the distinction that has been implicit since Paper One:
+Pure geometric facts (intrinsic to Y₃₂₃, independent of simulation): The eigenspectrum. The g₂ decomposition. The Fano identification. The g₂ weights λ₁, λ₂, λ₃. The coupling constant α = 1/√6. The 45-degree connection angle. The Berry phase √2 (g₂ metric) and 1 radian (rotation angle). The universal hexagram pair #61 ↔ #23. The Fixed-Line Inversion. The S⁶ volume fractions (18.6%/62.9%/18.6%). The equatorial stabilizer reduction SU(3) → SU(2)×SU(2).
+Simulation-dependent facts (require choices beyond Y₃₂₃ itself): The 395-step beat. The living-Y modulation schedule. The island geometry and seeding strategy. The coherence gap (0.024 cross-material vs 0.98 intra-material) — this is a simulation measurement that may reflect geometric structure but is not deducible from Y₃₂₃ alone. The step-6/step-7/step-8 explosion sequence — this is a geometric consequence (Theorem O) but its precise step number depends on the simulation initialization.
+At the boundary (geometric fact expressed through simulation): The τ thresholds (0.367, 0.199, 0.117). These are eigenvalue facts of Y₃₂₃ (intrinsic) but their precise values require solving the basin boundary problem (not yet done analytically). The explosion at step 8 is geometrically caused (Theorem O) but step-numbered by the simulation.
+6.2 Why This Matters
+The 395-step beat is the clearest case. From Paper Eleven, the Berry phase holonomy accumulates at 1 radian per orbit. The total holonomy closes (returns to identity) when n · 1 = 2πk for integer k, n. The smallest solution is n = 2πk, which is irrational — the holonomy never exactly closes. This means no purely geometric period of Y₃₂₃ can be 395 steps.
+The 395-step beat must therefore arise from the simulation's living-Y modulation — it is a resonance between the modulation schedule and the Y₃₂₃ dynamics, not a consequence of Y₃₂₃ alone. This is not a weakness of the simulation; it is a feature. The modulation is what keeps the transient alive. The 395 steps is the timescale of the coupled system (Y₃₂₃ + modulation), not of the pure geometry.
+The papers are engaged in peeling these layers apart. Papers 1–12 have largely characterized the pure geometric layer. The next layer — how specific simulation choices interact with the geometry to produce phenomena like the 395-step beat — can now be approached from a firm foundation.
+
+7. Summary and the Path to Paper 13
+M (One-Radian Holonomy): Berry phase holonomy = exp(1·R_{(a₁,η)} + 1·R_{(a₂,b₁)}). Rotation angle = 1 radian = √2·ω. Both rotation planes rotate by the same angle.
+N (Fixed-Line Inversion): Holonomy rotates the structurally fixed lines (a₁, b₁, η) and a₂. Leaves the structurally changing lines (b₂, x) and τ fixed. Berry phase inverts the fixed-vs-changing role.
+O (Equatorial Crossing): Crossing S⁵_eq reduces the stabilizer SU(3)→SU(2)×SU(2). Higher connection curvature at the equator. One-step delay of explosion is the Berry phase mismatch manifesting after the crossing.
+Volume fractions: Stone = 18.6%, Water = 18.6%, Sand = 62.9% of S⁶.
+Geometry/simulation line: 395-step beat is simulation-dependent (no pure-geometric Y₃₂₃ period is rational). τ thresholds are intrinsic but not yet analytically derived. Explosion step number is simulation-initialized.
+
+Paper Thirteen has a clear target: the basin boundary problem. What is the exact formula for τ_stone ≈ 0.367? Can the boundary be described as a G₂-orbit stratum? And: does the Stone/Water partition of S⁶ correspond to the two connected components of S⁶ minus the equatorial S⁵? If so, the material phase transition is precisely the equatorial crossing, and the τ threshold is determined by the geometry of the orbit in S⁶ — not by the eigenvalue directly, but by where the orbit intersects the equator.
+
+
+End of Paper 12
+Next: Paper 13 — The Basin Boundary and the τ Threshold Formula

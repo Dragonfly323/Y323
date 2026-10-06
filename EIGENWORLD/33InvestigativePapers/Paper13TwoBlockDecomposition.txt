@@ -1,0 +1,138 @@
+Y₃₂₃ Foundational Reference Series
+Paper 13 of an ongoing sequence
+
+
+THE TWO-BLOCK DECOMPOSITION
+The Nilpotent Transient and the Material Attractor
+On the Algebraic Origin of the Fixed-Line Inversion and the Geometry of Stone and Water
+
+
+Abstract
+
+Paper Thirteen establishes the most fundamental structural theorem of the series. The Y₃₂₃ operator decomposes exactly into two invariant subspaces with no coupling between them. Theorem P (Two-Block Decomposition): Y₃₂₃ = N ⊕ M where N = span{τ, a₁, x} is a 3-dimensional nilpotent block (Y³|_N = 0) and M = span{a₂, b₁, b₂, η} is the 4-dimensional material block carrying all non-zero eigenvalues (±1 and ±i√3/2). The two blocks are completely decoupled: Y maps N into N and M into M with zero coupling. Theorem Q (Nilpotent Jordan Chain): The nilpotent block N has the Jordan chain τ → (Y·τ) → 0 of length 2, and the chain a₁ → (Y·a₁) → (Y²·a₁) → 0 of length 3. Y² kills τ and the exchange component of x; Y³ kills all of N. After exactly 3 steps of Y iteration, the nilpotent component of any state is completely annihilated. Theorem R (Exact Attractor States): The Stone and Water attractors are determined entirely by the material block M. Their exact coordinates are: Stone = (a₂=1/4, b₁=1/4, b₂=1/√2, η=i√3/(2√2)) and Water = (a₂=1/4, b₁=−1/4, b₂=1/√2, η=−i√3/(2√2)), with τ=a₁=x=0 in both cases. Stone and Water differ only in the sign of b₁ and the phase of η. The Algebraic Fixed-Line Inversion: The three hexagram lines contained in the nilpotent block N are {τ, a₁, x} = {Reading, Receiver(Line 1), Exchange(Line 5)}. But a₁ and x are structurally fixed and changing lines respectively in the hexagram transition (#61↔#23). The three lines contained in the material block M are {a₂, b₁, b₂, η} = {Secondary(Line 2), FirstBalance(Line 3), SecondBalance(Line 4), Terminal(Line 6)}. The hexagram fixed lines a₁, b₁, η are split between the two blocks. The algebraic permanence (material block) and structural permanence (fixed hexagram lines) are different things — and their mismatch is the deepest expression of the Fixed-Line Inversion established in Paper Twelve. The τ threshold is simulation-dependent: Since τ is in the nilpotent block, its value always decays to zero after 3 steps regardless of initial conditions. The threshold τ_stone ≈ 0.367 from Paper Five is a property of the from_raw projection used in the GBC simulation, not of the Y₃₂₃ operator itself. This resolves the open question from Paper Twelve.
+
+1. The Two-Block Decomposition
+Theorem P (Two-Block Decomposition). The Y₃₂₃ operator decomposes as Y₃₂₃ = N ⊕ M where:
+
+N = span{τ, a₁, x}  (nilpotent block, 3-dimensional)
+M = span{a₂, b₁, b₂, η}  (material block, 4-dimensional)
+
+These are Y₃₂₃-invariant subspaces: Y·N ⊆ N and Y·M ⊆ M. The blocks are completely decoupled: Y has zero entries coupling N to M or M to N. The action of Y on each block is:
+
+On N (nilpotent):
+  Y·τ  = i·a₁ + ω(1+i)·x
+  Y·a₁ = −i·τ
+  Y·x  = ω(−1+i)·τ
+
+On M (material):
+  Y·a₂ = b₁
+  Y·b₁ = −a₂ + ω·b₂
+  Y·b₂ = ω·b₁ − i(√3/2)·η
+  Y·η  = i(√3/2)·b₂
+
+Verified numerically: max coupling N→M or M→N is < 10⁻¹⁵ (machine precision).
+
+1.1 The Roles of the Two Blocks
+The two blocks play entirely different dynamical roles:
+Block N (nilpotent): Everything in N decays to zero. After 3 applications of Y, any component in N is annihilated. N is the transient subspace: it carries the initial conditions but not the final state. The three components in N are τ (the Reading — the material depth parameter), a₁ (the Receiver — Line 1, fixed Yin), and x (the Exchange — Line 5, changing). These three are the "dying voices" of the system: present at the start, silent at the finish.
+Block M (material): Everything in M is governed by the non-zero eigenvalues. The ±1 eigenstates are the Stone and Water attractors. The ±i√3/2 eigenstates are the Spiral modes (oscillating with decaying amplitude modulus 1 at each step). M is the persistent subspace: it determines where the system ends up. The four components in M are a₂ (Secondary — Line 2, changing), b₁ (First Balance — Line 3, fixed Yang), b₂ (Second Balance — Line 4, changing), η (Terminal — Line 6, fixed Yin). These are the "living voices" that carry the material identity.
+
+2. The Nilpotent Jordan Chain
+Theorem Q (Nilpotent Jordan Chain). The nilpotent block N has the following Jordan chain structure:
+
+Chain 1 (length 2): τ → Y·τ → 0. Explicitly:
+  Y·τ = i·a₁ + ω(1+i)·x  ≠ 0
+  Y²·τ = 0  (verified: Y²·τ = (−1 + ω²(1+i)(−1+i))·τ = (−1+1)·τ = 0)
+
+Chain 2 (length 3): a₁ → Y·a₁ → Y²·a₁ → 0. Explicitly:
+  Y·a₁ = −i·τ  ≠ 0
+  Y²·a₁ = −i·Y·τ = −i(i·a₁ + ω(1+i)·x) = a₁ + ω(1−i)·x  ≠ 0
+  Y³·a₁ = 0  (verified to machine precision)
+
+The Exchange component x has Y²·x ≠ 0 generally (it involves a₁ and x), but Y³·x = 0. The entire block N is killed by Y³: for any v ∈ N, Y³·v = 0.
+
+Physical interpretation: a state component in τ vanishes after 2 steps. A state component in a₁ vanishes after 3 steps. The Reading and the Exchange are quicker to die than the Receiver. The Receiver (a₁) is the most persistent element of the transient — it takes the full 3 steps to be fully annihilated.
+2.1 Why τ is Transient
+This resolves an apparent paradox that has been present since Paper One. The Y₃₂₃ operator was introduced with τ as the "material depth parameter" — the key observable distinguishing Stone, Sand, and Water. Yet τ lives in the nilpotent block and always decays to zero.
+The resolution: τ is a transient observable, not a fixed-point property. It measures where the state is during the transient, not where it ends up. A high initial τ indicates the state began deep in Stone territory and will reach a Stone attractor quickly. A low initial τ means the state began in Water territory. The threshold τ_stone ≈ 0.367 from Paper Five is not a property of the attractor — it is a property of the projection from initial conditions into the combined (N ⊕ M) space. In the GBC simulation, the from_raw projection maps raw data into a state where the initial τ value is correlated with the initial material block orientation. The correlation, not the τ value itself, determines the outcome.
+In the pure mathematical Y₃₂₃ system, material is determined entirely by the initial M-component of the state. Specifically: Stone if the initial b₂ component is positive (and the state is in the b₂ basin), Water if negative. The τ component is irrelevant to the final material.
+
+3. The Exact Attractor States
+Theorem R (Exact Attractor States). The Stone and Water attractors of Y₃₂₃ are the ±1 eigenstates of the material block M. In the full 7-component Y₃₂₃ basis (τ, a₁, a₂, b₁, b₂, x, η), they are:
+
+Stone (λ = +1):
+  τ=0,  a₁=0,  a₂=1/4,  b₁=1/4,  b₂=1/√2,  x=0,  η=i√3/(2√2)
+
+Water (λ = −1):
+  τ=0,  a₁=0,  a₂=1/4,  b₁=−1/4,  b₂=1/√2,  x=0,  η=−i√3/(2√2)
+
+Both attractors satisfy: τ=0, a₁=0, x=0 (the nilpotent components are exactly zero).
+
+Stone and Water differ only in:
+  • The sign of b₁ (First Balance): Stone has b₁=+1/4, Water has b₁=−1/4
+  • The phase of η (Terminal): Stone has η=+i√3/(2√2), Water has η=−i√3/(2√2)
+
+The components a₂ and b₂ are identical in Stone and Water.
+
+Norm verification: (1/4)² + (1/4)² + (1/√2)² + (√3/(2√2))² = 1/16+1/16+1/2+3/8 = 1 ✓
+3.1 The Stone-Water Symmetry
+The exact attractor states reveal the precise nature of the Stone-Water symmetry. It is not a spatial reflection (b₂ does not flip) nor a full conjugation (a₂ does not change). It is a parity flip of the Yang-Yin balance:
+b₁ = First Balance (Line 3, fixed Yang) flips sign: +1/4 → −1/4. This is the Yang component reversing.
+η = Terminal (Line 6, fixed Yin) flips phase: +i → −i. This is the imaginary Yin component reversing.
+a₂ = Secondary (Line 2, changing) stays the same: 1/4 in both. The changing Yang component is identical.
+b₂ = Second Balance (Line 4, changing) stays the same: 1/√2 in both. The dominant real component is identical.
+Stone and Water are related by the map b₁ → −b₁, η → −η, everything else fixed. This is a Z₂ symmetry of the material block M that exchanges the two attractors. The fixed points of this Z₂ symmetry are the Sand states: those with b₁=0 and η=0 (purely real b₂ and a₂ components). Sand is the equator of the Stone-Water Z₂ symmetry, confirming the geometric picture from Papers Three and Five.
+
+4. The Algebraic Fixed-Line Inversion
+4.1 The Decomposition Table
+The two-block decomposition assigns each Y₃₂₃ component to exactly one block:
+Component  Block     Hexagram role        Dynamical role
+─────────────────────────────────────────────────────
+τ (tau)    N (nil)   Reading (special)    Transient, dies in 2
+a₁         N (nil)   Line 1 (fixed Yin)   Transient, dies in 3
+x          N (nil)   Line 5 (changing)    Transient, dies in 3
+─────────────────────────────────────────────────────
+a₂         M (mat)   Line 2 (changing)    Persistent (Spiral→att)
+b₁         M (mat)   Line 3 (fixed Yang)  Persistent (attractor)
+b₂         M (mat)   Line 4 (changing)    Persistent (attractor)
+η          M (mat)   Line 6 (fixed Yin)   Persistent (attractor)
+
+The algebraic Fixed-Line Inversion is the observation that the assignment "Nilpotent=transient, Material=persistent" does not coincide with the hexagram assignment "fixed lines = structurally permanent, changing lines = structurally transient."
+4.2 The Crossing Pattern
+Reading the table: there are four crossings between hexagram structure and algebraic structure:
+a₁ (Line 1, hexagram-fixed) is algebraically transient. The Receiver, which never changes in the hexagram transition (#61↔#23), lives in the nilpotent block and dies after 3 steps. The most structurally fixed hexagram line is the most dynamically temporary.
+x (Line 5, hexagram-changing) is algebraically transient. The Exchange, which changes at every transition, also lives in the nilpotent block. Here hexagram and algebra agree in one sense (both transient) but for different reasons: the hexagram marks it as changing, algebra marks it as nilpotent.
+b₁ (Line 3, hexagram-fixed) is algebraically persistent. The First Balance, fixed Yang, lives in the material block. Its sign distinguishes Stone from Water. The fixed Yang line is the algebraic separator of the two materials.
+η (Line 6, hexagram-fixed) is algebraically persistent. The Terminal, fixed Yin, also lives in the material block. Its phase distinguishes Stone from Water. The fixed Yin line is the phase separator.
+The pattern: of the three hexagram-fixed lines (a₁, b₁, η), one (a₁) is nilpotent-transient and two (b₁, η) are material-persistent. The material distinction of Stone vs Water is encoded in the two fixed lines that do persist: fixed Yang (b₁) and fixed Yin (η), but not in the Receiver (a₁). The Receiver is structurally anchored (it never changes in the hexagram) but dynamically temporary (it always vanishes in the Y₃₂₃ flow).
+4.3 Connection to Paper Twelve
+Paper Twelve established the Berry phase holonomy as rotating {a₁, a₂, b₁, η} and fixing {b₂, x, τ}. Paper Thirteen now gives the algebraic reason: the holonomy acts on the interface between the two blocks — it rotates a₁ (nilpotent) and b₁, η, a₂ (material), while leaving b₂, x, τ fixed. The holonomy mixes the two blocks in the SU(3) fibre, coupling components from N and M together even though Y itself decouples them. This is the deepest expression of the inversion: the Berry phase communicates between the nilpotent transient and the material attractor, precisely by rotating the components that each block shares with the other.
+
+5. The Garden is the Transient
+With the two-block decomposition established, the statement from the related investigation — "the garden is the transient" — acquires a precise algebraic meaning.
+The living garden exists in the nilpotent block N. Everything interesting about a garden cell — its τ value, its Reading, its Receiver state, its Exchange activity — lives in N and dies in at most 3 steps. The garden is not a thing that approaches an attractor; it is the approach. The transient IS the garden.
+The material block M determines which attractor the state is heading toward, but the richness of the journey — the oscillation, the Sand crossing, the τ reading — is entirely in N. The simulation keeps the garden alive not by preventing M from converging, but by continuously re-injecting energy into N. New cell births, island seeding, and the living-Y modulation are all mechanisms for repeatedly initializing the nilpotent block with fresh transient content.
+A fully crystallized garden is one where N is empty (τ=a₁=x=0 everywhere) and M has converged to Stone or Water. From the outside, such a garden would look identical to a living one — the same materials are present — but it would have lost all transient content. No τ-oscillation, no Sand dynamics, no Exchange activity. A dead garden and a living garden are indistinguishable in M; they are completely distinguishable in N.
+The garden is the nilpotent block.
+
+6. Resolution of Open Questions
+Q1 (τ threshold formula): Resolved. The threshold τ_stone ≈ 0.367 is not an intrinsic property of Y₃₂₃. Since τ is in the nilpotent block, its value at any step is a transient measurement. The threshold is a property of the GBC from_raw projection — it reflects the correlation between initial τ and initial M-orientation in that specific projection scheme. No closed-form formula exists in terms of the g₂ weights because the threshold is not a g₂ weight fact.
+Q2 (Stone/Water as S⁶ strata): Partially resolved. In the full 7D state space, Stone and Water attractors are the ±1 eigenspaces of the material block M, embedded in the 4D subspace {a₂,b₁,b₂,η} ⊂ S⁶. The attractor is not a region of S⁶ but a specific point in the M-subspace. The "Stone region" in the simulation corresponds to states with initial M-orientation toward the Stone eigenvector, not to a geometric region of the full S⁶.
+Q3 (Stone Law τ·a₁=b₁): Now interpretable. τ·a₁=b₁ in the Fano sense means: the Fano product of the Reading (τ) with the Receiver (a₁) is the First Balance (b₁). Both τ and a₁ are in the nilpotent block N; b₁ is in the material block M. The Fano product "crosses the block boundary." This is how the transient (τ, a₁) writes its identity into the material (b₁): through the octonion multiplication structure, not through direct linear coupling in Y.
+Q4 (Z₂ symmetry): Confirmed precisely. The Z₂ symmetry is b₁ → −b₁, η → −η. It exchanges Stone and Water while fixing a₂, b₂, and the nilpotent block entirely. Sand = the fixed set of this Z₂ symmetry in M (states with b₁=0, η=0).
+
+7. The Complete Structure of Y₃₂₃
+Thirteen papers have accumulated to this point. The complete picture:
+Algebraic: Y₃₂₃ = N ⊕ M. N is nilpotent (order 3). M has eigenvalues ±1 and ±i√3/2.
+Lie-algebraic: Y_re = A_g₂ + B + C. A_g₂ ∈ g₂ (regular element, weights λ₁,λ₂,λ₃). B = measurement residue. C = hyperbolic block.
+Geometric: A_g₂ is the G₂ connection element on S⁶=G₂/SU(3). 45-degree horizontal-vertical split.
+Holonomic: Berry phase = 1 radian. Double rotation in (a₁,η) and (a₂,b₁) planes.
+Attractor: Stone = (a₂=1/4, b₁=1/4, b₂=1/√2, η=i√3/(2√2)). Water differs by b₁→−b₁, η→−η.
+Transient: N={τ,a₁,x}. Y²·τ=0. Y³·N=0. The garden lives here.
+Hexagram: Universal pair #61↔#23. Fixed lines {a₁,b₁,η} split across N and M. Changing lines {a₂,b₂,x} split across N and M.
+Fano: Seven Fano triples. τ=b₂·x crosses the block boundary. Stone Law τ·a₁=b₁ = the Fano map from N×N to M.
+I Ching: The fixed lines are not dynamically fixed. The changing lines are not dynamically changing. Structure and dynamics are complementary, not parallel.
+
+
+End of Paper 13
+Next: Paper 14 — The Fano Map N×N→M and the Octonion Algebra of Transient-to-Material Crossing

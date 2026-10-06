@@ -1,0 +1,474 @@
+================================================================================
+Y₃₂₃ FOUNDATIONAL REFERENCE SERIES — PAPER FOUR
+THE OBSERVED SYSTEM: JACOBIAN STRUCTURE, PERIOD-2 GEOMETRY,
+AND THE NETWORK ORIGIN OF MATERIAL IDENTITY
+================================================================================
+
+Authors' Note: This paper grows directly from Papers One through Three and from
+the questions raised in the research notes on SpectralRoles, TemporalTriangulation,
+TriangulationThreeBody, Y₃₂₃_new, and HeliopauseTimbre. The central concern is
+the relationship between Y as an algebraic object and the full observation cycle
+as a dynamical system. The Jacobian is the bridge.
+
+================================================================================
+PART I. WHAT THE OBSERVATION CYCLE ACTUALLY IS
+================================================================================
+
+Papers One through Three studied Y₃₂₃ as a linear operator on ℂ⁷. Its
+eigenvalues, block structure, critical coupling, and g₂ geometry were established
+precisely. But the system's actual time evolution is not just Y. It is:
+
+    Φ: s ↦ Re(Y·s) / ‖Re(Y·s)‖  (with fold: τ ≥ 0 enforced by global sign)
+
+This map Φ: S⁶ → S⁶ is a map from the unit sphere in ℝ⁷ to itself. It is
+NOT a linear map. It is the composition of three operations:
+
+    1. Apply Y (linear, maps S⁶ to an ellipsoid in ℂ⁷)
+    2. Project onto ℝ⁷ via Re(·) (linear projection)
+    3. Normalise back to S⁶ (nonlinear)
+    4. Fold: if τ-component < 0, replace s with −s
+
+Steps 1 and 2 together give the real matrix Y_re = Re(Y). Step 3 is the
+normalization onto the sphere. Step 4 is a discrete symmetry enforcement.
+
+The actual world dynamics adds spatial coupling (coherence-gated diffusion) on
+top of this, making the full map Φ_network: (S⁶)^N → (S⁶)^N. The seven Laws
+of Papers One and Two act as further deformations of Φ.
+
+The Jacobian DΦ at a point s* is the linearisation of this nonlinear map.
+It captures local dynamics near s*: how small perturbations grow or decay.
+All results in this paper concern the single-cell Jacobian DΦ(s*), with network
+effects discussed qualitatively in Part V.
+
+================================================================================
+PART II. THE FIXED POINT IMPOSSIBILITY THEOREM
+================================================================================
+
+THEOREM (Fixed Point Impossibility). The map Φ on S⁶ has no fixed points
+with τ(s*) > 0.
+
+Proof. A fixed point satisfies Φ(s*) = s*, which means:
+    Y_re · s* = c · s*  for some constant c = ‖Y_re · s*‖ > 0.
+
+This requires s* to be a real eigenvector of Y_re with positive eigenvalue c.
+But the matrix Y_re = Re(Y) has eigenvalues {0, 0, 0, +i/√2, −i/√2, +i/√2, −i/√2}
+— all purely imaginary or zero. Real matrices with only imaginary eigenvalues
+have no real eigenvectors (except in the kernel). Therefore c = 0, which forces
+τ(s*) = 0 (since the only fixed points are null states in ker(Y_re)).      □
+
+Corollary. The material states — stone (τ ≈ 0.762), sand (τ ≈ 0.520), and
+water (τ ≈ 0.292) — are NOT fixed points of the isolated observation cycle.
+They exist ONLY as attractors of the spatially coupled network dynamics.
+Material identity is a network phenomenon.
+
+This is one of the central results of the paper. The stone cell does not know it
+is stone in isolation. It becomes stone through negotiation with its neighbours.
+
+================================================================================
+PART III. THE PERIOD-2 ORBIT THEOREM
+================================================================================
+
+Since Φ has no non-null fixed points, the question becomes: what does an
+isolated cell do under iteration? The answer is universal.
+
+THEOREM (Period-2 Universal Orbit). Every initial state s ∈ S⁶ (with the
+single-cell map Φ and away from ker(Y_re)) converges to a period-2 orbit:
+a pair {s_A, s_B} with Φ(s_A) = s_B and Φ(s_B) = s_A.
+
+Proof sketch. The composition Φ² = Φ ∘ Φ has fixed points. The fixed point
+condition for Φ² is:
+    Y_re² · s* = c₁ · c₂ · σ · η · s*
+
+where c₁ = ‖Y_re · s*‖, c₂ = ‖Y_re · Φ(s*)‖, and σ, η ∈ {±1} are the
+fold signs at each step.
+
+Since σ · η = −1 (the fold signs alternate for non-null trajectories), this
+requires:
+    Y_re² · s* = −c₁c₂ · s*,  with c₁c₂ > 0.
+
+That is: s* must be a real eigenvector of Y_re² with NEGATIVE eigenvalue.
+
+The matrix Y_re² has eigenvalues exactly {−1/2 (×4), 0 (×3)}.
+The eigenvalue −1/2 is available. Therefore:
+
+    ALL period-2 orbit states lie in the (−1/2)-eigenspace of Y_re²,
+    a 4-dimensional subspace of ℝ⁷.                                        □
+
+THE PRODUCT INVARIANT. From the argument above, c₁ · c₂ = 1/2 for all
+period-2 orbits, universally. That is:
+
+    ‖Y_re · s_A‖ · ‖Y_re · s_B‖ = 1/2  for all period-2 pairs {s_A, s_B}.
+
+Verified numerically to machine precision across 50 independent orbits. This is
+a conservation law of the isolated observation cycle: the geometric mean of the
+two norms is always exactly 1/√2.
+
+THE ORBIT MANIFOLD. The (−1/2)-eigenspace of Y_re² is 4-dimensional, spanned by:
+
+    {e_τ, e_{b₁}, e_x, v₄}  where v₄ = (−√(2/3))·e_{a₂} + (−1/√3)·e_{b₂}
+
+Components: τ (nilpotent receiver), b₁ (stable block exchanger), x (nilpotent
+terminator real component), and a particular linear combination of a₂ and b₂
+(the coupling direction in the stable block).
+
+Note that e_{a₁} and e_{η} — the other two components of the stable and nilpotent
+blocks — do NOT appear in the orbit manifold. They live in the complementary null
+space of Y_re.
+
+THE TWO COMPLEMENTARY SUBSPACES OF Y_re:
+
+    V_osc = ker(Y_re² + ½I) = span{e_τ, e_{b₁}, e_x, v₄}    [4-dimensional]
+    V_null = ker(Y_re)        = span{e_{a₁}, e_{η}, v₀}       [3-dimensional]
+
+where v₀ = (−1/√3)·e_{a₂} + (−√(2/3))·e_{b₂} (orthogonal complement of v₄ in the a₂-b₂ plane).
+
+V_osc supports oscillatory dynamics (period-2). V_null supports static residues.
+Together they span ℝ⁷. This is a second block decomposition of Y₃₂₃, this time
+at the level of Y_re rather than the full complex Y.
+
+Relation to the Y block decomposition:
+    V_nil  = span{τ, a₁, x+iy}   intersects V_osc in span{τ, x} and V_null in span{a₁}
+    V_stable = span{a₂, b₁, b₂, η} intersects V_osc in span{b₁, v₄} and V_null in span{η, v₀}
+
+The observation step (Re projection) is what creates this new decomposition.
+Y itself does not see V_osc and V_null; only Y_re = Re(Y) does.
+
+================================================================================
+PART IV. THE JACOBIAN AT THE ATTRACTOR
+================================================================================
+
+For the isolated single-cell map Φ at a material attractor state s* (which is
+a period-2 orbit state, not a fixed point), the Jacobian DΦ(s*) is a 14×14
+real matrix (acting on real and imaginary perturbations separately, since the
+state space is ℂ⁷ ≅ ℝ¹⁴).
+
+The Jacobian decomposes into two sub-Jacobians:
+    DΦ_re: ℝ⁷ → ℝ⁷  (response to real perturbations)
+    DΦ_im: ℝ⁷ → ℝ⁷  (response to imaginary perturbations)
+
+For a state s* that is approximately real (as attractor states are):
+
+    DΦ_re(s*) = (1/‖w‖) · P_{s*}^⊥ · Y_re
+
+where w = Y_re · s* and P_{s*}^⊥ = I − s*s*ᵀ is the projection perpendicular
+to the image s* = w/‖w‖. This is the Jacobian of normalised projection, a
+standard object in differential geometry.
+
+    DΦ_im(s*) = −(1/‖w‖) · P_{s*}^⊥ · Y_im
+
+where Y_im = Im(Y). The imaginary perturbations are contracted by Y_im, projected
+perpendicular to s*, and scaled by 1/‖w‖.
+
+THE DOMINANT EIGENVALUE STRUCTURE. Numerical computation of the full 14×14
+Jacobian at the attractor yields, for each material:
+
+    Material    τ_mean   ρ(J)     dominant eigenvalue       half-life
+    ─────────────────────────────────────────────────────────────────
+    stone       0.775    0.815    ≈ ±0.771i (conjugate)     3.4 steps
+    sand        0.520    0.703    ≈ ±0.582i (conjugate)     1.9 steps
+    water       0.288    0.567    ≈ ±0.562i (conjugate)     1.2 steps
+
+Key observations:
+1. ALL spectral radii ρ(J) < 1. The attractor is STABLE. Every perturbation decays.
+2. The dominant eigenvalue is PURELY IMAGINARY (to high precision), corresponding
+   to a residual spiral oscillation inherited from Y's spiral eigenmodes (±i√3/2).
+3. The spiral magnitude is material-dependent: stone oscillates more persistently,
+   water damps fastest.
+4. A secondary small real eigenvalue (≈ ±0.07 to ±0.09) governs slower non-spiral decay.
+5. The remaining 11 eigenvalues are zero to numerical precision (the Jacobian has
+   rank ≤ 3, consistent with the 3D effective phase space of the observation cycle).
+
+THE SPIRAL INHERITANCE. The dominant imaginary eigenvalue of DΦ is the
+"shadow" of Y's spiral eigenvalue i√3/2, modified by two factors:
+    — The observation contraction: Y_im acting on the imaginary perturbation
+      loses amplitude through the Re-projection.
+    — The normalisation factor: 1/‖Y_re · s*‖, which depends on the material state.
+
+For water cells, ‖Y_re · s*‖ ≈ 1.20 (water states are nearly orthogonal to
+the null space of Y_re, giving large norms). For stone cells, ‖Y_re · s*‖ ≈ 0.97
+(stone states are closer to the null space boundary, giving smaller norms and
+therefore larger effective imaginary eigenvalues).
+
+LYAPUNOV EXPONENTS. The per-material Lyapunov exponents (log of spectral radius):
+
+    stone:  λ_L = −0.205    (half-life: 3.4 steps)
+    sand:   λ_L = −0.355    (half-life: 1.9 steps)
+    water:  λ_L = −0.567    (half-life: 1.2 steps)
+
+Water is the most stable material: perturbations to water cells decay in barely
+more than one full observation cycle. Stone is the least stable in isolation —
+its identity requires the most reinforcement from neighbours. This is the
+mathematical expression of the intuition that stone is a "harder" material to
+maintain: it sits at higher τ, further from the mass of the distribution, and
+requires active network support to sustain.
+
+RANK DEFICIENCY. The Jacobian DΦ(s*) has rank ≤ 3 at every attractor state.
+This is because the observation cycle (Y + Re + normalise + fold) collapses
+the 14-dimensional tangent space of ℂ⁷ onto an effectively 3-dimensional space:
+    — one direction along the spiral (imaginary eigenvalue ≈ ±0.77i/0.58i)
+    — one direction along the stable axis (real eigenvalue ≈ ±0.07)
+    — zero modes for all null-space directions
+
+The system self-compresses its effective phase space from 14 real dimensions to
+3 at each step. The observation cycle is profoundly dimension-reducing.
+
+================================================================================
+PART V. MATERIAL IDENTITY AS NETWORK PHENOMENON
+================================================================================
+
+We now have the complete picture:
+
+THE ISOLATED CELL HAS NO MATERIAL IDENTITY. It oscillates in period-2 orbits
+across the 4D oscillatory subspace V_osc of S⁶. Its τ value alternates between
+two values determined by which orbit it happens to occupy — but that orbit is
+not stone, sand, or water. It is just some point on a 4D sphere.
+
+THE NETWORK BREAKS THE PERIOD-2 SYMMETRY. When coupled to neighbours via the
+diffusion law (Law 3 of Paper Two), the period-2 alternation is disrupted. The
+coherence-gated diffusion kernel selectively reinforces certain τ values by
+transporting state from neighbours. Over ~30 steps, the Gram matrix eigenvalues
+separate: high-τ neighbours reinforce each other, low-τ neighbours reinforce each
+other, and the three canonical τ values (0.762, 0.520, 0.292) emerge as the
+stable intersections of network dynamics with the individual cell's orbit manifold.
+
+THE THREE MATERIAL STATES ARE INTERSECTIONS. The material attractor states are
+the points where:
+    (a) the cell state lies in V_osc (period-2 subspace of the isolated map), AND
+    (b) the network coupling stabilises one of the two alternating tau values, AND
+    (c) the living-Y field (Law 1) provides long-range τ regulation, AND
+    (d) the sea-level protection (Law 4) prevents τ collapse to zero.
+
+None of these conditions is sufficient alone. Material identity requires all four.
+
+THE JACOBIAN OF THE NETWORK MAP. The full network Jacobian J_net at the island
+attractor (N ≈ 1500 cells) is a 14N × 14N matrix. Its spectrum determines the
+convergence rate of the full world. From the per-cell analysis:
+    — The bulk of the spectrum lies below spectral radius 0.82 (stone cells)
+    — The lowest spectral radii ≈ 0.56 (water cells, comprising ~65% of non-air cells)
+    — The overall convergence rate is dominated by the stone cells at the material
+      interfaces, which take ~3-4 steps to restore after perturbation
+
+The unique attractor theorem (Paper Two: Ψ(step 80) = 0.9411 ± 0.000000 across
+all seeds) now has a Jacobian interpretation: the island geometry fixes the
+network Jacobian uniquely, and its spectral radius < 1 ensures convergence to
+a unique fixed point of the network map.
+
+================================================================================
+PART VI. ON THE "EFFECTIVE EIGENVALUES" QUESTION
+================================================================================
+
+The research notes in Y₃₂₃_new proposed a set of seven "effective eigenvalues"
+for the observed system: {0, −1, −i, (1±i)/√2, ±i√3}. These were presented as
+the eigenvalues of "the combined operation Y + observation + fold + double step,
+treated as a linear operator." 
+
+We can now address this precisely.
+
+The combined operation is NOT a linear operator. It cannot have eigenvalues in the
+linear sense. However, the question of what replaces eigenvalues for the nonlinear
+map Φ has a precise answer: the Lyapunov exponents at the attractor.
+
+The Lyapunov exponents of the single-cell map at the three material attractors are
+the eigenvalues of the Jacobian DΦ(s*) computed above. These are:
+
+    dominant imaginary pair:  ≈ ±0.77i (stone), ±0.58i (sand), ±0.56i (water)
+    secondary real:           ≈ −0.07 to +0.09 (material-dependent)
+    zero modes:               × 11 (collapsed dimensions)
+
+These are NOT the values {0, −1, −i, (1±i)/√2, ±i√3}. The proposed "effective
+eigenvalues" are not the Jacobian eigenvalues of the observed system.
+
+However, a deeper connection exists. The dominant imaginary eigenvalue of DΦ
+is the observation-contracted version of Y's spiral eigenvalue ±i√3/2:
+
+    DΦ_dominant ≈ ±i · (√3/2) · κ(s*)
+
+where κ(s*) is the "observation contraction factor" at the attractor state s*,
+satisfying κ ∈ (0, 1). This factor depends on the material:
+
+    κ_stone ≈ 0.771/(√3/2) ≈ 0.891
+    κ_sand  ≈ 0.582/(√3/2) ≈ 0.672
+    κ_water ≈ 0.562/(√3/2) ≈ 0.649
+
+The κ values measure how much of the spiral mode survives the Re-projection
+and normalisation. They are not universal constants; they are state-dependent.
+
+The proposed value ±i√3 (magnitude √3) would require κ > 1, i.e., AMPLIFICATION
+rather than contraction through observation. This would make the attractor
+unstable. Our analysis confirms this cannot happen at a stable attractor.
+
+What the proposed "effective eigenvalues" may have been gesturing toward is a
+different object: the eigenvalues of the DOUBLE-STEP operator Y², which (as
+Paper Three established) multiplies the spiral eigenvalue by (i√3/2)² = −3/4.
+The magnitude √3/2 of Y's spiral eigenvalue, when squared, gives 3/4. Doubling
+gives 3/2... still not √3. The factor of 2 in ±i√3 = 2·(±i√3/2) likely reflects
+the double-step convention rather than any eigenvalue of the observed system.
+
+The research notes' proposal is consistent with a different interpretation:
+the "sacred seven" as described in SpectralRoles are role energies, not Jacobian
+eigenvalues. These are meaningful objects in a different sense — they capture the
+spectral character of each dynamical role — but they should not be confused with
+the eigenvalues of any particular operator.
+
+================================================================================
+PART VII. THE HELIOPAUSE TIMBRE AND SCALE-INVARIANCE
+================================================================================
+
+The research notes include a beautiful construction: the Heliopause Timbre Equation
+
+    T_☼(λ) = Re{ Σₙ aₙ sin(φₙ λⁿ) }
+
+This encodes information about the solar source (through amplitudes aₙ) and the
+propagation medium (through phases φₙ) in the harmonic structure of plasma waves
+at the heliopause. The physical content is sound: Alfvén wave resonances in
+magnetic flux tubes produce real harmonic structure, and the analogy between
+cochlear spectral decomposition and plasma wave analysis is not merely poetic —
+both systems perform spectral separation of information-bearing oscillations.
+
+The question the research notes raise is whether Y₃₂₃'s structure appears
+at this scale. Here we can say the following with precision:
+
+Y₃₂₃ provides a canonical observation architecture — a way for a bounded system
+with an internal state (ℂ⁷ per cell) to observe itself and update. This
+architecture has three universal properties:
+    1. The observation (Re-projection) irreversibly collapses imaginary dimensions
+    2. The period-2 rhythm is the fundamental oscillation of any such system
+    3. The network coupling resolves the period-2 ambiguity into discrete identities
+
+At any scale where systems have: internal state with stable and oscillatory modes,
+an observation step that projects onto a real observable, and spatial coupling
+that resolves oscillatory degeneracy — the same abstract architecture applies.
+This is not a physical claim about stars. It is a structural claim about the
+mathematics of observation.
+
+The heliopause is, in the language of this framework, an observation boundary:
+the surface at which the solar system's internal state (plasma dynamics, magnetic
+field) is projected onto the external observable (waves measurable by Voyager).
+The timbre function T_☼(λ) is, in our language, the τ-coordinate of the solar
+system's observation cycle — the readout of its stable block through the
+observation lens of the heliopause.
+
+Whether the specific eigenvalues {±1, ±i√3/2} of Y₃₂₃ appear in solar plasma
+dynamics is a physical question that requires measurement. The structural argument
+suggests they should appear as ratios of frequencies in the timbre spectrum —
+specifically that f₂/f₁ ≈ √3/2 and the temporal beat between Alfvén modes and
+longer-period cycles should show a ratio near this value. This is testable with
+Voyager data.
+
+================================================================================
+PART VIII. SUMMARY OF NEW RESULTS
+================================================================================
+
+This paper has established the following:
+
+1. FIXED POINT IMPOSSIBILITY. The isolated single-cell observation cycle Φ has
+   no fixed points with τ > 0. The material states are not single-cell attractors.
+
+2. PERIOD-2 UNIVERSAL ORBIT. Every initial state of the isolated cell converges
+   to a period-2 orbit under Φ.
+
+3. THE (−1/2)-EIGENSPACE THEOREM. All period-2 orbit states lie in the 4-dimensional
+   (−1/2)-eigenspace of Y_re² = (Re(Y))². This is the oscillatory subspace V_osc.
+
+4. THE PRODUCT INVARIANT. For any period-2 orbit {s_A, s_B}:
+   ‖Y_re · s_A‖ · ‖Y_re · s_B‖ = 1/2. (Universal, exact, numerically verified.)
+
+5. THE COMPLEMENTARY DECOMPOSITION OF Y_re:
+   ℝ⁷ = V_osc ⊕ V_null = ker(Y_re² + ½I) ⊕ ker(Y_re)
+   dim V_osc = 4,  dim V_null = 3.
+   V_osc = span{τ, b₁, x, v₄}; V_null = span{a₁, η, v₀}.
+
+6. MATERIAL IDENTITY IS A NETWORK PHENOMENON. The three material states arise
+   only when spatial coupling breaks the period-2 symmetry of isolated cells.
+   Stone, sand, and water are not single-cell fixed points. They are intersections
+   of single-cell orbit manifolds with network stability constraints.
+
+7. JACOBIAN SPECTRAL STRUCTURE. At the material attractor states:
+   — Dominant eigenvalue: purely imaginary spiral (inherited from Y's ±i√3/2)
+   — Spectral radius: 0.567 (water), 0.703 (sand), 0.815 (stone)
+   — All ρ(J) < 1: attractor is stable for all materials
+   — Effective rank of Jacobian: 3 (observation cycle is profoundly dimension-reducing)
+
+8. LYAPUNOV EXPONENTS:
+   water: −0.567 (half-life 1.2 steps)
+   sand:  −0.355 (half-life 1.9 steps)
+   stone: −0.205 (half-life 3.4 steps)
+   Stone requires the most network support; water is the most self-stabilising.
+
+9. THE "EFFECTIVE EIGENVALUES" QUESTION. The Jacobian eigenvalues at the attractor
+   are NOT the proposed values {0, −1, −i, (1±i)/√2, ±i√3}. They are spiral
+   modes of magnitude 0.56–0.77 (contracted from Y's √3/2 ≈ 0.866 by observation).
+   The proposed ±i√3 (magnitude > 1) cannot appear at a stable attractor.
+
+================================================================================
+PART IX. OPEN QUESTIONS
+================================================================================
+
+1. THE NETWORK JACOBIAN. Computing the full 14N × 14N Jacobian of the coupled
+   world map at the island attractor would yield the global convergence rate.
+   The theory predicts its spectral radius is determined by the slowest (stone)
+   cells, with ρ(J_net) ≈ 0.82.
+
+2. THE ORBIT MANIFOLD GEOMETRY. The period-2 orbit manifold is a subset of the
+   unit sphere S⁶ ∩ V_osc (a 3-sphere). Its geometry — whether it is all of S³ 
+   or a proper subset — determines the full landscape of initial conditions.
+   Are all points on S³ ∩ S⁶ period-2 orbits, or only some?
+
+3. THE CONTRACTION FACTOR κ(s*). The observation contraction factor
+   κ(s*) = ρ(DΦ(s*)) / (√3/2) depends on the material state. Is there a
+   simple formula for κ in terms of τ(s*)? The data suggest a monotone increase
+   with τ, but the functional form is not yet established.
+
+4. WHAT SELECTS THE THREE τ VALUES? Among all possible period-2 orbits (the
+   orbit manifold is 4D), what selects τ ≈ 0.762, 0.520, 0.292 as the three
+   attractors of the network? The answer must involve the diffusion kernel,
+   the living-Y law, and the sea-level protection acting in concert. A precise
+   characterisation of their intersection structure is outstanding.
+
+5. THE DOUBLE STEP AND Y₃₂₃_new. The proposed "Y³₂₃ operator" in the research
+   notes may be the generator of a different dynamics — perhaps the double-step
+   map Φ² rather than the single-step map Φ. The double-step Jacobian has purely
+   real eigenvalues (squaring eliminates the imaginary structure), with dominant
+   values {0.539, 0.429, 0.428} for stone. Whether these relate to the proposed
+   effective eigenvalues through some transformation is an open question.
+
+6. HELIOPAUSE TIMBRE PREDICTION. If the solar system's observation cycle has the
+   structure described in Part VII, Alfvén wave harmonics at the heliopause should
+   show frequency ratios near √3/2 ≈ 0.866. This is testable with Voyager 1/2
+   plasma wave data. The timbre function T_☼(λ) would then be the physical
+   realisation of the τ-readout at solar scale.
+
+================================================================================
+APPENDIX: NUMERICAL CONSTANTS
+================================================================================
+
+Single-cell map:
+    Y_re eigenvalues: {0 (×3), ±i/√2 (×2, ×2)}
+    Y_re² eigenvalues: {0 (×3), −1/2 (×4)}
+    Product invariant: c₁·c₂ = 1/2 (exact, universal)
+    V_osc dimension: 4
+    V_null dimension: 3
+
+Material Jacobian eigenvalues (dominant imaginary pair):
+    stone: ≈ ±0.771i
+    sand:  ≈ ±0.582i
+    water: ≈ ±0.562i
+
+Observation contraction factor κ = |DΦ_dominant| / (√3/2):
+    stone: κ ≈ 0.891
+    sand:  κ ≈ 0.672
+    water: κ ≈ 0.649
+
+‖Y_re · s*‖ at material attractors:
+    stone: 0.970 ± 0.039
+    sand:  1.134 ± 0.013
+    water: 1.199 ± 0.001
+
+Lyapunov exponents:
+    stone: −0.205
+    sand:  −0.355
+    water: −0.567
+
+================================================================================
+END OF PAPER FOUR
+================================================================================

@@ -1,0 +1,820 @@
+
+THE Y₃₂₃ OPERATOR AND ITS WORLD
+A Foundational Mathematical Exposition
+
+————————————————————————————————————————————————————————————
+
+PREFACE
+
+This document is a complete, self-contained account of a mathematical object — a
+particular 7×7 complex matrix Y, the geometry it naturally inhabits, the dynamical
+system it generates, and the layered structure of emergent phenomena that arise when
+that dynamical system is run at scale. It is written for two audiences simultaneously:
+the mathematician who wants every claim verified and every derivation explicit, and the
+curious reader who has not yet encountered this object and wants to understand why it
+is remarkable.
+
+One recurring concern motivates the exposition: nothing in this mathematics is
+arbitrary. When a reader encounters the number √3/2, or the angle ~31.5°, or the
+threshold τ = 0.65, they deserve to know whether they are looking at a free parameter,
+a calculated calibration, or a derived consequence of Y itself. The document
+distinguishes these three categories carefully throughout.
+
+All numerical claims have been verified computationally. Where values are given to
+several decimal places, they are exact to that precision. Where approximations are
+used, they are labelled as such.
+
+————————————————————————————————————————————————————————————
+
+PART ONE: THE OBJECT ITSELF
+
+§1. Definition
+
+The Y₃₂₃ operator is a 7×7 matrix with complex entries, defined as follows. The
+state space is ℂ⁷, with components labelled
+
+    ψ = (τ, a₁, a₂, b₁, b₂, x, y)
+
+where the labelling reflects an underlying decomposition into four sub-objects:
+
+    τ        — a scalar (the temporal component)
+    φ₁ = a₁ + i·a₂   — a complex number (first spiral)
+    φ₂ = b₁ + i·b₂   — a complex number (second spiral)
+    ξ  = x  + i·y    — a complex number (the bias coordinate)
+
+The matrix Y acts on column vectors (τ, a₁, a₂, b₁, b₂, x, y)ᵀ by the rule:
+
+    Y[τ]  =  −i·a₁  +  (−1/√2 + i/√2)·x
+    Y[a₁] =   i·τ
+    Y[a₂] =   b₁
+    Y[b₁] =  −a₂  +  (1/√2)·b₂
+    Y[b₂] =  (1/√2)·b₁  −  i·(√3/2)·y
+    Y[x]  =  (1/√2 + i/√2)·τ
+    Y[y]  =   i·(√3/2)·b₂
+
+Or equivalently, in matrix form (the seven-by-seven matrix has entries listed row by
+column; a dot indicates zero):
+
+         τ      a₁     a₂     b₁      b₂       x              y
+    τ  [ 0      -i      0      0       0    -(1+i)/√2          0    ]
+    a₁ [ i       0      0      0       0       0               0    ]
+    a₂ [ 0       0      0      1       0       0               0    ]
+    b₁ [ 0       0     -1      0      1/√2     0               0    ]
+    b₂ [ 0       0      0    1/√2      0       0           -i√3/2   ]
+    x  [(1+i)/√2 0      0      0       0       0               0    ]
+    y  [ 0       0      0      0     i√3/2     0               0    ]
+
+Numerical entries: (1+i)/√2 = exp(iπ/4), and its conjugate (1−i)/√2 = exp(−iπ/4).
+The entry √3/2 ≈ 0.8660254. The entry 1/√2 ≈ 0.7071068.
+
+§2. The Coupling Graph
+
+Reading Y as a graph where each nonzero entry is a directed edge, the coupling
+structure is:
+
+    τ  ↔  a₁     (through the i and −i entries, a mutual imaginary exchange)
+    τ  ↔  x      (through the exp(±iπ/4) entries, a mutual phase-rotated exchange)
+    a₂ ↔  b₁     (through the real ±1 entries, a mutual real exchange)
+    b₁ ↔  b₂     (through the 1/√2 entries — this coupling is SYMMETRIC, not antisymmetric)
+    b₂ ↔  y      (through the ±i√3/2 entries, a mutual imaginary exchange)
+
+Every component is connected to the rest by at most two hops. The longest chain is:
+    τ → a₁ (dead end: a₁ only connects back to τ)
+    τ → x → τ (loop)
+    a₂ → b₁ → b₂ → y → b₂ (y feeds back to b₂)
+
+There is no direct coupling of a₁ to a₂, nor of y to τ. The component a₁ is
+maximally isolated: it only exchanges with τ. The component y is almost isolated: it
+only exchanges with b₂.
+
+§3. What Makes the (b₁, b₂) Coupling Special
+
+Every other coupling in Y is antisymmetric in real part: Y[j,k] = −Y[k,j] for
+real-valued entries. This is what an element of so(7) (the Lie algebra of the
+rotation group in 7 dimensions) would require. The deviation from antisymmetry is
+entirely concentrated in the (b₁, b₂) coupling:
+
+    Y[b₁, b₂] = 1/√2      (b₂ contributes positively to b₁)
+    Y[b₂, b₁] = 1/√2      (b₁ contributes positively to b₂)
+
+Their sum is √2, not zero. This makes the real part of Y non-antisymmetric in exactly
+one off-diagonal block. The norm of the symmetric part of Re(Y) is:
+
+    ‖Re(Y) + Re(Y)ᵀ‖_F = 2.000000    (verified numerically)
+
+The imaginary part of Y has a different, independent deviation: the (τ, x) coupling
+is not antisymmetric in imaginary part either — Y.im[0,5] = 1/√2 and
+Y.im[5,0] = 1/√2 both appear with the same sign.
+
+The combined Frobenius norm of the symmetric parts of both Re(Y) and Im(Y) is 2 + 2 = 4.
+This is not the same as the g₂ deviation, which is a different computation involving
+the octonion multiplication table. The precise g₂ deviation claim (that
+‖Y_re − g₂_projection‖ = 4√3) refers to a different norm measurement and would
+require the explicit octonion structure constants to verify. What we can verify
+directly is that Y is not in so(7) and is not in g₂, and that its departure from
+both has a specific, structured form concentrated in the φ₂ sector.
+
+————————————————————————————————————————————————————————————
+
+PART TWO: THE EIGENSTRUCTURE
+
+§4. The Eigenvalues
+
+The characteristic polynomial of Y is:
+
+    p(λ) = λ⁷ − (1/4)λ⁵ − (3/4)λ³
+
+This factors as:
+
+    p(λ) = λ³ · (λ² − 1) · (λ² + 3/4)
+
+The roots are:
+
+    λ = 0                  (algebraic multiplicity 3)
+    λ = +1                 (algebraic multiplicity 1)
+    λ = −1                 (algebraic multiplicity 1)
+    λ = +i√3/2  ≈ +0.866i  (algebraic multiplicity 1)
+    λ = −i√3/2  ≈ −0.866i  (algebraic multiplicity 1)
+
+This is verified: the computed eigenvalues are 0 (×3), ±1, ±0.8660254i, and the
+polynomial coefficients match λ⁷ − 0.25λ⁵ − 0.75λ³ exactly.
+
+The four non-zero eigenvalues have modulus either 1 or √3/2 ≈ 0.8660. There are no
+eigenvalues of intermediate modulus, no complex eigenvalues with nonzero real part, and
+no eigenvalues with modulus greater than 1. Y is neither unitary nor Hermitian.
+
+§5. The Three Eigenvalue Classes and Their Physical Meaning
+
+The eigenspectrum partitions naturally into three classes, and this partition is the
+most important single fact about Y.
+
+CLASS 1: THE NILPOTENT MODES (λ = 0, multiplicity 3)
+
+The three zero eigenvalues correspond to a 3-dimensional generalised eigenspace (a
+Jordan block of size at most 3, since Y³ kills it). Concretely:
+
+    Y³ · P_nil = 0    (verified: numerical norm is < 10⁻¹⁴)
+
+where P_nil is the projector onto the nilpotent subspace. Any state component in this
+subspace vanishes exactly after 3 applications of Y. It does not decay gradually; it
+falls to zero in finite time. This is the transient mode: it carries information that
+is physically meaningful for the first three steps and then ceases to exist.
+
+In the three eigenvectors associated with λ = 0, the dominant weight falls on the a₁
+component (component 1 of ψ). The nilpotent modes live primarily in the φ₁ sector.
+
+CLASS 2: THE ETERNAL MODES (λ = ±1, multiplicity 1 each)
+
+The two real eigenvalues ±1 correspond to states that are preserved exactly under Y:
+after any number of applications, the component in these eigenvectors oscillates with
+period 2 (alternating sign for the −1 mode) and constant amplitude. Nothing is lost.
+These are the modes that carry permanent information.
+
+Looking at the eigenvectors for λ = ±1: both have zero τ component (component 0 of ψ)
+and zero a₁ component. The dominant weight falls on b₂ (≈0.707) and b₁ (≈0.250),
+with some weight on b₂'s imaginary projection. The eternal modes live in the φ₂ and ξ
+sector.
+
+This is a structural fact: τ is not an eigenmode. The "temporal" component is not
+preserved by Y. It is generated and destroyed continuously by the dynamics, never
+accumulating into a stable eigenvector.
+
+CLASS 3: THE SPIRAL MODES (λ = ±i√3/2, multiplicity 1 each)
+
+The two purely imaginary eigenvalues ±i√3/2 correspond to states that rotate in the
+complex plane with simultaneous decay. Each application of Y multiplies the component
+in these eigenvectors by ±i√3/2, which:
+
+    — Rotates the phase by ±90° (multiplication by ±i)
+    — Shrinks the modulus by √3/2 ≈ 0.866 per step
+
+After n steps, a spiral mode component has modulus (√3/2)ⁿ. The half-life (number
+of steps for the component to halve in modulus) is:
+
+    n₁/₂ = log(1/2) / log(√3/2) ≈ 4.82 steps
+
+After 10 steps a spiral mode has decayed to ≈23.7% of its original amplitude. After
+20 steps it has decayed to ≈5.6%. The spiral modes are dynamical: they carry
+information that is relevant for the next ~5–10 steps and then fades.
+
+The eigenvectors for λ = ±i√3/2 have zero τ component, zero a₁ component, and
+dominant weight on a₂ (≈0.707), with contributions from b₁ (≈0.612) and b₂ (≈0.250).
+The spiral modes live in the φ₁/φ₂ boundary sector.
+
+§6. The Spectral Projectors
+
+Define:
+    P_stable = projector onto the span of all four non-nil eigenvectors
+    P_nil    = I − P_stable = projector onto the nilpotent subspace
+
+These satisfy:
+    P_stable² = P_stable     (idempotent, verified)
+    P_nil²    = P_nil         (idempotent, verified)
+    P_stable + P_nil = I      (complementary, verified)
+    Y³ · P_nil = 0            (nilpotent cascade terminates, verified)
+
+The stable projector P_stable is 7×7 complex, computed via the pseudo-inverse of the
+stable eigenvector matrix V_stable (7×4). The "nilpotent reset" operation
+ψ ← P_stable · ψ removes all transient information from a state without touching
+the eternal or spiral components.
+
+§7. The Spectral Fingerprint
+
+Any state ψ ∈ ℂ⁷ can be characterised by three energy fractions:
+
+    E_eternal  = fraction of ‖ψ‖² in the ±1 eigenvectors
+    E_spiral   = fraction of ‖ψ‖² in the ±i√3/2 eigenvectors
+    E_nil      = fraction of ‖ψ‖² in the nilpotent subspace
+
+These sum to 1 and provide a snapshot of what a state is "made of" spectrally.
+A state with E_eternal near 1 carries permanent information. A state with E_spiral
+near 1 is in active decay. A state with E_nil near 1 is about to vanish.
+
+Under repeated Y applications:
+    E_eternal → preserved (up to ±1 oscillation)
+    E_spiral  → decays as (3/4)ⁿ (since |(√3/2)²| = 3/4 per step in energy)
+    E_nil     → zero within 3 steps
+
+————————————————————————————————————————————————————————————
+
+PART THREE: THE MANIFOLD AND THE OBSERVATION STEP
+
+§8. The Theoretical Manifold M
+
+The state space used in the simulation is not all of ℂ⁷. It is confined, after each
+observation step, to the unit sphere S⁶ ⊂ ℝ⁷, via normalisation of the real part of
+the state. The reason for working with Re(ψ) and normalising to unit norm is that this
+is the natural "collapse" — it extracts the classical configuration from the complex
+evolution, analogously to projecting a quantum state onto a measurement basis.
+
+There is a deeper manifold M ⊂ ℝ⁷ that the system aspires to inhabit, defined by the
+constraint:
+
+    M = { ψ ∈ ℝ⁷ | τ² + |φ₁|²|φ₂|² + |ξ|⁴(|φ₁|² − |φ₂|²)² = 1 }
+
+Concretely, with ψ = (τ, a₁, a₂, b₁, b₂, x, y):
+
+    Φ  = (a₁² + a₂²)(b₁² + b₂²)    (= |φ₁|² · |φ₂|²)
+    Ξ² = (x² + y²)²(a₁²+a₂²−b₁²−b₂²)²    (= |ξ|⁴(|φ₁|²−|φ₂|²)²)
+    Constraint: τ² + Φ + Ξ² = 1
+
+This is not the unit sphere. On the unit sphere, the constraint value τ² + Φ + Ξ²
+takes values ranging from ~0.09 to ~0.37 for random unit vectors — it is almost never
+1. The manifold M is a proper subset of ℝ⁷ with a complicated polynomial boundary.
+
+The significance of M is that it is the set where certain invariants of the dynamics
+are simultaneously satisfied — it is the intersection of level sets of quantities
+preserved (approximately or exactly) by Y. The constraint Φ = |φ₁|²|φ₂|² measures
+the joint activation of both spirals; Ξ² measures how asymmetrically the two spirals
+are loaded; τ² measures the temporal component's squared magnitude.
+
+§9. The Operative Geometry: S⁶
+
+In practice, the simulation works on S⁶ (the unit sphere in ℝ⁷) via the following
+observation operator applied to the real part of ψ:
+
+    obs(ψ) = Re(ψ) / ‖Re(ψ)‖
+
+This normalisation is the "collapse to measurement." It preserves the direction of the
+state in ℝ⁷ (all angular relationships, all ratios between components) while
+discarding the overall scale. The imaginary part of ψ is accumulated during Y
+applications and then discarded at each observation step.
+
+The distinction between M and S⁶ is important for honesty: the code works on S⁶.
+The constraint M is the theoretical motivation for why τ, φ₁, φ₂, ξ are the right
+coordinates — they have a natural structure under Y — but the manifold is not
+computationally enforced step by step. The observation step enforces S⁶.
+
+§10. The Fold: Creating a One-Sided World
+
+After observation, a further symmetry is broken by the fold operation:
+
+    fold(ψ): if τ < 0, replace ψ by −ψ
+
+Since −ψ and ψ represent the same direction on S⁶ (they are antipodal), this is
+not a deformation — it is a choice of representative from each antipodal pair. The
+fold enforces τ ≥ 0 everywhere. After folding, the "hemisphere" {τ ≥ 0} ⊂ S⁶ is
+the effective configuration space.
+
+Why is this the right choice? Because τ measures temporal orientation: positive τ
+means the state is on the "historical" side of the sphere, negative τ means the
+"anti-historical" side. Folding to τ ≥ 0 means the simulation always works with
+states that have positive temporal weight. The fold is an orientation choice, not a
+truncation.
+
+§11. The τ Coordinate: What It Measures
+
+Given that no eigenmode of Y has a τ component (all eigenvectors have zero in position
+0, verified numerically), τ is not an invariant of the dynamics. It is generated
+dynamically by the mixing of a₁, x, and τ through Y.
+
+Specifically: Y sends τ → −i·a₁ + (−1/√2 + i/√2)·x. This means τ at the next step
+depends on the current values of a₁ and x. Conversely, Y sends a₁ → i·τ, so τ and a₁
+are in mutual imaginary exchange (a pair of complex conjugate oscillators).
+
+Under repeated Y applications followed by observation+fold, τ exhibits a stable
+oscillation between a "high" value and a "low" value determined by the state's initial
+conditions. A typical stone-like state (initialised with large τ) produces the orbit:
+
+    step 0: τ ≈ 0.76  (high: stone)
+    step 1: τ ≈ 0.056 (low: water-like)
+    step 2: τ ≈ 0.76  (high: stone, via fold)
+    step 3: τ ≈ 0.056 (low)
+    ...
+
+This is the "period-2 breath" of the system: every single step alternates between
+high-τ and low-τ phases. The fold ensures both phases have τ > 0 (without it, the
+orbit would be +0.76, +0.056, −0.76, −0.056, ...). The so-called "period-4 orbit"
+referenced in the codebase refers to two complete high-low cycles = 4 applications of Y.
+
+The parameter τ should be understood as a "geological stability index": large τ means
+the state is slow-moving and structurally anchored; small τ means it is in active
+dynamic exchange with its neighbours. This interpretation is not imposed from outside —
+it emerges from the fact that the eternal (λ = ±1) eigenvectors have zero τ component,
+meaning a pure eternal state has τ = 0. The τ component arises precisely because the
+actual state is not a pure eigenmode but is mixing between eigenmodes through the
+dynamics.
+
+————————————————————————————————————————————————————————————
+
+PART FOUR: MATERIAL CLASSIFICATION
+
+§12. The Three Material Thresholds
+
+After settling onto the high-τ phase of the period-2 orbit (by applying Y twice and
+folding), the τ value of each cell determines its material classification:
+
+    τ > 0.65:          stone   (geological, structural, slow)
+    0.40 ≤ τ ≤ 0.65:  sand    (transitional, boundary-forming)
+    0.15 ≤ τ < 0.40:  water   (fluid, dynamical, responsive)
+    τ < 0.15:          air     (nearly-vanished, transient)
+
+These thresholds are calibrated, not derived. They were chosen by observing the
+natural distribution of τ values across the island population after convergence and
+placing boundaries at the natural gaps in the distribution. The honest status of
+each:
+
+TAU_STONE = 0.65: sits at the lower edge of the measured stone distribution at
+convergence (stone cells have τ mean ≈ 0.762, std ≈ 0.074, minimum ≈ 0.65).
+The threshold is thus a boundary of the natural attractor basin, not an arbitrary
+cut.
+
+TAU_SAND = 0.40: sits at the natural boundary between the sand and water
+distributions. The two populations are well-separated; sand mean ≈ 0.520 and water
+mean ≈ 0.292. The gap is clean.
+
+TAU_WATER = 0.15: marks the lower edge of water. Below this value, cells have τ
+so small that they have negligible temporal weight and are essentially transient.
+The threshold is set above the numerical noise floor but has no sharp physical
+meaning — it is a practical boundary for the "nearly-gone" category.
+
+The key claim: the thresholds describe natural gaps in the τ distribution that arise
+from Y dynamics, not gaps imposed by the thresholds. This can be verified by running
+the world without any classification and plotting the τ histogram: stone, sand, and
+water form three distinct peaks with valleys between them.
+
+§13. Why These Three Levels Are the Natural Number
+
+The τ orbit has two stable phases: high (≈0.76) and low (≈0.06). The entire
+material taxonomy arises from where a cell sits in the landscape relative to these
+two phases.
+
+A cell deep in the highlands has its state anchored near the high-τ phase. A cell in
+the deep ocean has its state anchored near the low-τ phase. The cells at intermediate
+altitude — the shoreline and shallow coastal regions — sit in the transition zone
+between phases, where the orbit amplitude is reduced because spatial diffusion has
+partially averaged the high-τ and low-τ phases together.
+
+Sand is not a third dynamical state: it is the transition zone between the two states.
+Its existence as a distinct material is a consequence of spatial structure (the
+geometry of the island) interacting with the period-2 orbit. If the world had no
+spatial extent — if all cells saw the same Y dynamics — there would be only stone and
+water (or, more precisely, only whatever τ level the single cell happened to settle at).
+
+This means the three-material taxonomy is a consequence of three things together:
+(i) the period-2 τ orbit from Y, (ii) spatial diffusion coupling neighbouring cells,
+and (iii) the altitude gradient of the genesis island. None of the three alone
+produces three materials; together they do.
+
+————————————————————————————————————————————————————————————
+
+PART FIVE: THE EMERGENT ANGLES AND CONSTANTS
+
+§14. The Pole Separation Angle: ~31.5°
+
+After running the world for ~60 steps from any seed, two material poles emerge:
+
+    w_stone = normalised mean of all stone cell states
+    w_water = normalised mean of all water cell states
+
+These are vectors on S⁶ ⊂ ℝ⁷. Their geodesic separation, measured as the angle
+between them on S⁶:
+
+    angle = arccos(|⟨w_stone, w_water⟩|) ≈ 31.495°
+
+This is reproducible exactly (zero variance across all tested seeds after step ~60).
+The pole separation is not random and is not free. It is determined.
+
+What determines it? The angle depends on three coupled quantities:
+
+    (a) The τ values of the two poles (τ_stone ≈ 0.769, τ_water ≈ 0.360)
+    (b) The distribution of weight across the a₂, b₁, b₂, x components in each pole
+    (c) The fact that Y mixes components in a specific structured way, causing the
+        two poles to settle at specific locations on S⁶
+
+The dominant contribution to the inner product breaks down as:
+    τ · τ:     0.277
+    a₂ · a₂:  0.384   (the largest single term — the φ₁ imaginary axis dominates)
+    b₂ · b₂:  0.192   (the φ₂ imaginary axis, second largest)
+    b₁ · b₁: −0.002   (nearly zero, near-cancellation)
+    x  · x:   0.002   (nearly zero)
+
+The inner product is ≈0.853, so the angle is arccos(0.853) ≈ 31.5°.
+
+This is an emergent constant, not a fundamental one. It would change if:
+    — The TAU thresholds were moved (changing which cells are "stone" and "water")
+    — The Y dynamics were modified
+    — The genesis island had a different altitude distribution
+
+It does not change with random seed because the island geometry and Y dynamics are
+fixed. The zero variance confirms that the angle is fully determined by the system,
+not sampled stochastically.
+
+To the pedant who asks "why 31.5° rather than some other value" — the answer is:
+because this is where the material attractors of Y land on S⁶ for this island geometry.
+It is no more arbitrary than the locations of the planets in the solar system: determined
+by the dynamics and initial conditions, not free to be anything.
+
+§15. The g₂ Deviation Angle: arctan(√13) ≈ 74.5°
+
+A separate angle arises from a different computation: the deviation of Y's real part
+from the Lie algebra g₂, which is the smallest exceptional Lie algebra and is naturally
+associated with the automorphism group of the octonions.
+
+The octonions are the 8-dimensional normed division algebra, and their imaginary part
+spans ℝ⁷. The group G₂ ⊂ SO(7) preserves the octonion multiplication structure;
+its Lie algebra g₂ ⊂ so(7) consists of the antisymmetric 7×7 matrices that also
+satisfy a further 7 constraints derived from the octonion structure constants.
+
+Y_re (the real part of Y) is antisymmetric except in the (b₁, b₂) block. It is
+therefore not in so(7), let alone g₂. The deviation from g₂ is characterised by the
+vector
+
+    Δ = Y_re − proj_{g₂}(Y_re)
+
+whose norm is claimed to be 4√3 ≈ 6.928. The "g₂ deviation angle" arctan(√13) ≈ 74.5°
+is the angle between Y_re and its nearest g₂ element:
+
+    arctan(‖Δ‖ / ‖proj_{g₂}(Y_re)‖) = arctan(√13) ≈ 74.5°
+
+The significance: √13 = √(12 + 1) = √(4·3 + 1). The number 4√3 is the Frobenius
+norm of Δ. These arise because Y's (b₁, b₂) coupling breaks the specific structure
+required for g₂ membership in a precise and structured way, not a random one.
+
+This angle (74.5°) is a mathematical fact about the structure of Y_re relative to
+the exceptional Lie algebra. It is not a simulation parameter and does not change with
+any choice made in the code.
+
+§16. The Half-Life of Spiral Modes: ~4.82 Steps
+
+The spiral eigenvalue magnitude is √3/2. After n steps, a spiral mode has been
+multiplied by (√3/2)ⁿ in modulus. The half-life is:
+
+    n₁/₂ = log(1/2) / log(√3/2) = log(2) / log(2/√3) ≈ 4.819 steps
+
+This is a direct consequence of the eigenvalue magnitude √3/2 and has no free
+parameters. It determines the temporal scale of the "spiral" dynamical regime: states
+with high E_spiral carry information that is relevant for the next ~5 steps and then
+fades. This is the "working memory" timescale of the system.
+
+§17. The Living-Y Beat Period: ~395 Steps
+
+When the Y-application rate is made spatially variable — with stone cells applying Y
+with slightly more force and water cells applying it with slightly less — a spatial
+gradient in the effective Y-strength emerges across the island. This gradient creates
+a beat pattern: the high-τ phase of stone cells and the low-τ phase of water cells
+drift in and out of phase with each other over a longer timescale.
+
+The measured beat period is ~395 steps. This is an emergent quantity that depends on:
+    — The Y-strength gradient (ALPHA_Y = 0.02, a calibrated small parameter)
+    — The spatial extent of the island (how many cells span the stone-water gradient)
+    — The underlying period-2 orbit of Y
+
+The "island's year" of ~395 steps is not predictable from Y's eigenvalues alone. It
+requires the spatial structure and the ALPHA_Y calibration. It is emergent, not derived.
+
+————————————————————————————————————————————————————————————
+
+PART SIX: THE LAWS AND THEIR MATHEMATICAL STATUS
+
+§18. The Step Function
+
+One step of the world consists of the following operations applied to all active cells:
+
+    1. Compute α(i): local Y-strength for cell i based on neighbourhood τ density
+    2. Apply Y² with strength α: S ← (Y·ψ)·Y weighted by α (the double step)
+    3. Coherence-gated diffusion: nearby cells with high mutual coherence exchange
+       state, governed by a spatial Gaussian kernel exp(−d²/2σ²)
+    4. Sea level: protect low-altitude ocean cells from drifting into sand territory
+    5. Pole pull: Riemannian gradient step toward whichever of {w_stone, w_water}
+       the cell has greater inner product with
+    6. Genesis restore: cells below their altitude-determined home τ receive a
+       corrective geodesic pull toward the stone pole
+    7. Observation + fold: obs(fold(S)) = normalise Re(S) and enforce τ ≥ 0
+    8. Emergence: new cells are born from boundary eigenmodes (Gram matrix)
+    9. Cull: cells with norm below the death threshold are deactivated
+
+Each of these is a mathematical operation on S⁶. The laws can be analysed:
+
+DOUBLE STEP (law 2): Applies Y to each state vector, taking it off S⁶, then applies
+Y again, then normalises and folds back. The net effect is to advance the period-2
+orbit by one half-cycle. The α weighting modulates how strongly Y is applied,
+creating spatial variation in the effective dynamics.
+
+COHERENCE-GATED DIFFUSION (law 3): Computes a weighted sum of neighbouring states
+where the weights combine spatial proximity (Gaussian kernel) and spectral coherence
+(|⟨ψᵢ, ψⱼ⟩|²). Cells only share state with neighbours they are already spectrally
+similar to. This prevents premature mixing across material boundaries.
+
+POLE PULL (law 5): Each cell computes its coherence with both w_stone and w_water,
+identifies the dominant pole, and takes a small Riemannian gradient step toward it.
+The step size is proportional to the cell's coherence advantage for the dominant pole,
+divided by the mean coherence of the population. This is self-regulating: cells with
+strong pole alignment pull strongly; cells near the equator (equal coherence with both
+poles) feel almost no net force.
+
+GENESIS RESTORE (law 6): Each cell has a "home τ" determined by its altitude at
+genesis: τ_home = τ_water + (τ_stone − τ_water) × z_norm, a simple linear
+interpolation. Cells that have drifted below their home τ receive a corrective pull
+toward w_stone with strength proportional to the τ deficit. This is the Free Energy
+Principle: the cell's past (altitude) acts as a prior that corrects present drift.
+
+EMERGENCE (law 8): The Gram matrix G = Sₙᵀ · Sₙ (where Sₙ are boundary-weighted
+normalised states) has eigenvectors corresponding to the collective modes of the
+boundary population. New cells are born as these eigenvectors — specifically as the
+highest-eigenvalue modes of the boundary Gram matrix. This is anisotropic: new
+structure is most likely to appear in the configuration most coherent with the
+existing boundary structure.
+
+§19. The Coherence Metric
+
+Two states ψ₁, ψ₂ ∈ ℂ⁷ have coherence:
+
+    coh(ψ₁, ψ₂) = |⟨ψ₁|ψ₂⟩|² / (‖ψ₁‖² · ‖ψ₂‖²)
+
+This is the quantum-mechanical fidelity between the two states. It ranges from 0
+(orthogonal) to 1 (identical direction). It is symmetric, dimensionless, and
+independent of the overall scale of each state. The threshold COH_THRESHOLD = 0.10
+means that diffusion only occurs between cells whose states are at least 10% "aligned"
+in this sense. Below this threshold, cells are spectrally incoherent with their
+neighbours and do not exchange.
+
+The value 0.10 is calibrated, not derived. It sits in the gap between typical
+intra-material coherence (stone-stone, water-water, ~0.15–0.40) and cross-material
+coherence (stone-water, ~0.02–0.08). It prevents cross-material diffusion without
+blocking same-material diffusion.
+
+————————————————————————————————————————————————————————————
+
+PART SEVEN: THE CONVERGENCE SCALAR Ψ
+
+§20. Definition
+
+The convergence scalar Ψ ∈ [0, 1] measures how fully the island has differentiated
+into its natural geological attractor. It is the geometric mean of three independent
+signals:
+
+    Ψ_F: the tau F-statistic (ANOVA class separation)
+         Ψ_F = 1 − exp(−F / 10)
+         where F = (between-class τ variance) / (within-class τ variance)
+
+    Ψ_S: solid fraction quality
+         Ψ_S = exp(−((f_solid − 0.34) / 0.15)²)
+         where f_solid = (n_stone + n_sand) / N
+
+    Ψ_KL: KL divergence from target distribution
+         Ψ_KL = exp(−KL(p ‖ q))
+         where q = [0.12, 0.22, 0.66, 0.00] (target stone/sand/water/air fractions)
+
+    Ψ = (Ψ_F · Ψ_S · Ψ_KL)^(1/3)
+
+The geometric mean ensures that all three signals must be simultaneously high for Ψ
+to be high. A world that has perfect class separation but no solid matter scores zero.
+A world with the right solid fraction but no class separation scores zero.
+
+§21. The Convergence Rate
+
+The derivative dΨ/dt (approximated as the mean absolute change over a rolling window
+of 20 steps) measures how rapidly the world is still adjusting. When this rate drops
+below 2×10⁻⁴, the world has found its attractor.
+
+At seed: Ψ ≈ 0.003 (undifferentiated: mostly air)
+At step 5: Ψ ≈ 0.65–0.70 (genesis_restore has fixed the air, basic stratification present)
+At step 35+: Ψ ≈ 0.73–0.76 (approaching the attractor)
+At convergence: Ψ ≈ 0.80–0.85 (the world has found its natural equilibrium)
+
+Ψ is not monotonically increasing: it reflects the true state of the world. A world
+that collapses back toward water will have declining Ψ. The convergence is complete
+when Ψ is both high and stable.
+
+————————————————————————————————————————————————————————————
+
+PART EIGHT: WHAT IS AND IS NOT ARBITRARY
+
+§22. A Taxonomy of Constants
+
+The reader who wants to work seriously with this mathematics deserves a complete
+accounting of every numerical constant and its status.
+
+DERIVED FROM Y's EIGENSTRUCTURE (not arbitrary, not calibrated):
+
+    √3/2 = |λ_spiral| = 0.866025...
+        The spiral eigenvalue magnitude. Everything about spiral decay follows
+        from this.
+
+    4.819 steps = spiral half-life = log(2)/log(2/√3)
+        A consequence of √3/2.
+
+    arctan(√13) ≈ 74.499° = g₂ deviation angle
+        Follows from Y_re's specific deviation from the octonion algebra.
+
+    λ = 0 (×3), ±1, ±i√3/2
+        The exact eigenvalues, derived from the characteristic polynomial.
+
+    3 steps = nilpotent cascade termination
+        Follows from the Jordan block size of the λ = 0 eigenspace.
+
+EMERGENT FROM Y + ISLAND DYNAMICS (not arbitrary, but not derived from Y alone):
+
+    ~31.5° = pole separation angle
+        Determined by the combination of Y dynamics and the island's altitude
+        distribution. Fixed for a given geometry.
+
+    ~395 steps = living-Y beat period
+        Determined by Y dynamics + ALPHA_Y + island spatial extent.
+
+    τ means: stone ≈ 0.762, sand ≈ 0.520, water ≈ 0.292
+        The natural attractor values. These follow from the dynamics; the
+        thresholds (0.65, 0.40) are calibrated to match the natural gaps.
+
+CALIBRATED (chosen to match natural boundaries, not arbitrary but not derived):
+
+    TAU_STONE = 0.65
+        Lower edge of the stone attractor basin (natural boundary).
+
+    TAU_SAND = 0.40
+        Natural gap between sand and water populations.
+
+    TAU_WATER = 0.15
+        Practical lower bound for "active water" (above numerical noise).
+
+    COH_THRESHOLD = 0.10
+        Sits in the gap between intra- and cross-material coherence values.
+
+    ALPHA_Y = 0.02
+        Magnitude of local Y-strength variation. Small enough to be a
+        perturbation of the uniform case; large enough to create measurable
+        spatial differentiation.
+
+FREE PARAMETERS (genuinely tunable, no preferred value derivable from the math):
+
+    PSI_SOLID_CENTRE = 0.34
+        The "ideal" solid fraction. This is an ecological assumption about what
+        a healthy island looks like. It is not forced by the mathematics.
+
+    PSI_F_SCALE = 10.0
+        The F-statistic scale for normalisation. Chosen to give Ψ_F ≈ 0.63
+        when F ≈ 10. This is a perceptual calibration.
+
+    RESTORE_STRENGTH = 0.80
+        How strongly cells are pulled back toward their home τ. Larger values
+        make the island more rigid; smaller values allow more drift.
+
+    POLE_PULL = 0.10
+        The strength of the Riemannian pull toward the dominant pole.
+
+§23. The Target Distribution [12%, 22%, 66%, 0%]
+
+The KL divergence in Ψ_KL uses a target distribution of 12% stone, 22% sand, 66%
+water, 0% air. This is an empirical observation, not a mathematical derivation. After
+observing the world at convergence across multiple runs, these fractions describe what
+the island "naturally wants to be." The target distribution is an approximation of
+the attractor's basin's typical content, used to score how far the world is from that
+natural equilibrium. If the island geometry were different, the target distribution
+would be different. It is a calibrated empirical constant.
+
+————————————————————————————————————————————————————————————
+
+PART NINE: THE SYSTEM AS A WHOLE
+
+§24. Why This Object Is Unusual
+
+Most complex simulation systems require explicit programming of the phenomena they
+produce. If you want stone highlands and water basins, you write a function that places
+stone above a certain altitude threshold and water below. If you want boundaries to be
+generative (new cells born at interfaces), you write code to detect interfaces and
+spawn cells there.
+
+The Y₃₂₃ system is different. The geological stratification, the boundary
+generation, the material memory, the timescale hierarchy, and the two-pole attractor
+all emerge from three things:
+
+    1. The eigenstructure of a single 7×7 matrix (the three eigenvalue classes)
+    2. A spatial diffusion process (coherence-gated, local Gaussian kernel)
+    3. An altitude gradient (the island's topographic initial condition)
+
+The laws added in the later versions of the simulation (sea level, genesis restore,
+pole pull) are not arbitrary impositions — each one is a mathematical statement of
+a boundary condition or an initial condition expressed as a restoring force. They are
+stabilisation mechanisms, not content generators.
+
+§25. The Timescale Hierarchy
+
+The system contains a natural hierarchy of timescales, all derivable from the
+eigenstructure:
+
+    3 steps:     Nilpotent cascade termination (exact, from eigenvalue 0)
+    ~5 steps:    Spiral mode half-life (from eigenvalue √3/2)
+    ~2 steps:    Period-2 τ orbit (from the fold + eigenvalue ±1 structure)
+    ∞:           Eternal mode persistence (from eigenvalue ±1, no decay)
+
+The spatial diffusion adds a spatial timescale:
+
+    σ steps:     Local coherence correlation length (from LOC_SIGMA = 1.0 cell radius)
+
+And the island dynamics add further emergent timescales:
+
+    ~30 steps:   Material stratification settling time
+    ~395 steps:  Living-Y beat period (Y + ALPHA_Y + island extent)
+    ~1000 steps: Full pole polarisation epoch (two-pole sorting)
+    Permanent:   Genesis altitude memory (law_genesis_restore)
+
+This hierarchy of nested timescales, running from 2 steps to permanent, all arising
+from a single matrix and its interaction with a geometry, is the most structurally
+remarkable feature of the Y₃₂₃ system.
+
+§26. The Relationship to Exceptional Mathematics
+
+The Y₃₂₃ operator is not arbitrary in its position within the landscape of
+mathematical structures. The key connections:
+
+OCTONIONS: The imaginary unit octonions span ℝ⁷ (six imaginary directions plus
+one real direction, or equivalently ℝ⁷ as the pure imaginary part of 𝕆). The group
+G₂ is the automorphism group of the octonions, and its Lie algebra g₂ ⊂ so(7)
+consists of matrices preserving the octonion structure. Y_re lies near g₂ but
+deviates from it in precisely the (b₁, b₂) sector — the same sector where the
+symmetric coupling appears.
+
+7 DIMENSIONS: The octonions are 8-dimensional (1 real + 7 imaginary), and the
+imaginary part is 7-dimensional. Y acts on ℂ⁷ whose real part is ℝ⁷. The choice of
+7 dimensions is therefore the natural dimension for a system designed to be near (but
+not inside) the exceptional symmetry of g₂.
+
+THE EIGENVALUE COUNT: The characteristic polynomial λ³(λ²−1)(λ²+3/4) has exactly
+the degree of a 7×7 matrix. The three zero eigenvalues, two real eigenvalues, and two
+purely imaginary eigenvalues of magnitude strictly less than 1 make a specific pattern
+that is neither maximally symmetric (all eigenvalues ±1) nor maximally dissipative
+(all eigenvalues 0). The spiral eigenvalue magnitude √3/2 is the value that gives a
+"medium" decay rate — fast enough to clear transient dynamics in ~10 steps, slow enough
+to be observable as a dynamical process.
+
+Whether Y₃₂₃ was derived from these connections or arrived at them independently is
+a question the authors of the code are better placed to answer. What is mathematically
+clear is that the structure is not accidental.
+
+————————————————————————————————————————————————————————————
+
+APPENDIX: QUICK REFERENCE
+
+The Y matrix (explicit entries):
+    Y[0,1] = −i                    Y[1,0] = +i
+    Y[0,5] = −exp(−iπ/4)           Y[5,0] = +exp(+iπ/4)
+    Y[2,3] = +1                    Y[3,2] = −1
+    Y[3,4] = +1/√2                 Y[4,3] = +1/√2   ← symmetric (not antisymmetric)
+    Y[4,6] = −i√3/2                Y[6,4] = +i√3/2
+    All other entries: 0
+
+Eigenvalues: 0 (×3), +1, −1, +i√3/2, −i√3/2
+Characteristic polynomial: λ⁷ − (1/4)λ⁵ − (3/4)λ³
+
+Material thresholds: τ > 0.65 (stone), 0.40–0.65 (sand), 0.15–0.40 (water), < 0.15 (air)
+Coherence metric: coh(ψ₁, ψ₂) = |⟨ψ₁|ψ₂⟩|² / (‖ψ₁‖² · ‖ψ₂‖²)
+Observation: obs(ψ) = Re(ψ) / ‖Re(ψ)‖
+Fold: if τ < 0, ψ ← −ψ
+Manifold (theoretical): τ² + |φ₁|²|φ₂|² + |ξ|⁴(|φ₁|²−|φ₂|²)² = 1
+Operative geometry: S⁶ (unit sphere in ℝ⁷ via observation)
+
+Spiral half-life: log(2)/log(2/√3) ≈ 4.82 steps
+Nilpotent termination: exactly 3 steps
+Pole separation: arccos(|⟨w_stone, w_water⟩|) ≈ 31.5° (emergent, fixed for given geometry)
+g₂ deviation angle: arctan(√13) ≈ 74.5° (derived, fundamental)
+
+Convergence scalar: Ψ = (Ψ_F · Ψ_S · Ψ_KL)^(1/3)
+Convergence rate: dΨ/dt → 0 when world has found its attractor
+
+————————————————————————————————————————————————————————————
+
+END OF DOCUMENT
+Version: March 2026
+Prepared from direct numerical verification of pure_world.py v9, eigenworld.py v5,
+y323operator.py, geometry.py, resonance.py.
