@@ -1,0 +1,23 @@
+The first thing that happens is boring. The corpus gets loaded. Y₃₂₃ becomes an entity. Its spectrum becomes a set of related entities. The Fano classification becomes relations. The physics bridges become bridge records. Nothing surprising. Transcription with extra steps. But it's the first time the structure exists outside the documents — and that matters, because the documents are linear and the graph isn't.
+
+The second thing is the first time you run a query and get an answer the documents didn't give you. Not a new fact — a new adjacency. "What entities are related to both the cascade period N and the fine structure constant?" You couldn't ask that of the documents. They have no index. The graph does. And the answer is something you half-knew but never saw stated, because the documents had to present things in order, and the order hid the adjacency. That's when it starts.
+
+The third thing: the unknowns registry begins to hum. Not because an agent decided to investigate. Because the schema has empty slots. A relation of type "unknown" points at an entity that doesn't exist yet. A conjectural claim has evidence attached and no proof. A subgraph is disconnected from everything else. The Atlas is now saying here is a hole in me. And the hole is legible. You can see its shape. You know what would fill it.
+
+The fourth thing: someone — maybe you, maybe an agent — adds something new. A spectral triple. A category. A sheaf. Something not in the original corpus. And it fits. Not because you designed the schema to fit that specific thing, but because you designed it to fit things in general. The first time that happens, the growth invariant stops being aspirational. The Atlas extended before it forced a redesign. That was the promise. It held.
+
+The fifth: convergence events start accumulating. Two representations of the same object, arrived at independently, share an invariant. The Atlas records it. A third representation arrives. A fourth. The convergence index climbs. And at some point you realize the Atlas isn't just storing mathematics — it's making the rhymes visible. That's a different kind of thing than a database. Databases don't show you rhymes.
+
+The sixth: the epistemic ledger becomes alive. It's not a static table anymore. A conjecture becomes a theorem when a proof is attached. A derived result becomes established when it's independently verified. An open question closes. A refuted claim stays in the record but its status changes. And you can query it — "what moved from conjectural to proved in the last month?" — and it answers. The Atlas is now tracking not just what is known, but how confidence has moved.
+
+The seventh: the Atlas starts producing work. Not autonomously — it has no agents yet. But it generates questions. Queries that return nothing become quests. Disconnected subgraphs become invitations. Anomalies that were preserved become investigations. The Atlas is doing what a good research collaborator does: not answering questions, but asking them. And the questions are good ones, because they come from structure rather than from a person's hunch.
+
+The eighth: a paper cites an Atlas entity ID. And the ID resolves. The Atlas is now part of the literature. It's not a tool anymore — it's a citation target. That's the threshold where it stops being your project and starts being infrastructure.
+
+The ninth: the first major version bump. Not because you decided to. Because the accumulated evidence required it. The migration runs. The old state is preserved. The new state reads the old state. Nothing breaks. The versioning contract holds. You realize you were worried about something that didn't happen.
+
+The tenth — and this is the one that matters — at some point the Atlas is producing more than you can personally review. Not more than you can understand. More than you can personally check. And you have to decide whether to trust it. This is where the protocol saves you, because the protocol is what kept the growth honest. Every extension went through the same gate. Every conflict became a record. Every unknown was preserved. The system didn't take shortcuts, because you didn't build it to take shortcuts.
+
+That's the moment you find out what you actually built. Not the schema. Not the protocol. The thing underneath both of them — a way of letting a structure grow without lying to yourself about what it is.
+
+And then the Atlas tells you what it needs to become next. Which is what Doc III §17 said it would do. "For now." The whole point.
