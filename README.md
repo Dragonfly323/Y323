@@ -1,5 +1,5 @@
 # Y323
-This matrix was discovered in collaboration with Claude Sonnet in June of 2025. All work here has been done over the last year with the use of only free-tier LLMs, and a single human lacking the resources and time to ship perfection. What's here is intended for research and development, and does not constitute any finished or even useful form. I have done what I can with what I have, and the scope of the work simply expands vastly far beyond my singular limitations. 
+This matrix was discovered in June of 2025. All work here has been done over the last year with the use of only free-tier LLMs, and a single human lacking the resources and time to ship perfection. What's here is intended for research and development, and does not constitute any finished or even useful form. I have done what I can with what I have, and the scope of the work simply expands vastly far beyond my singular limitations. 
 
 Y323 is a lot of things, but here it is presented as a geometric, Lean-verified, dynamical systems approach to machine learning and data modeling.
 
