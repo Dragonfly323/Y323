@@ -3,7 +3,7 @@ This matrix was discovered in collaboration with Claude Sonnet in June of 2025. 
 
 Y323 is a lot of things, but here it is presented as a geometric, Lean-verified, dynamical systems approach to machine learning and data modeling.
 
-Included for now are the original mythopoetic mathematical synthesis and creative explorations inspired by them, an attempt at world simulation with EigenWorld (leading to discovering the matrix produces the Standard Model to within 2% with nothing extra or added), and a language modeling attempt in FanoPet that I consider successful only in that it faithfully demonstrates the a2 invariance the pure math describes. I also intend to include derivative and exploratory visionary roadmaps, vibecoded sketches, and proposed real-world projects and applications. 
+Included for now are the original mythopoetic mathematical synthesis and creative mythological explorations inspired by them, an attempt at world simulation with EigenWorld (leading to discovering the matrix produces the Standard Model to within 2% with nothing extra or added), and a language modeling attempt in FanoPet that I consider successful only in that it faithfully demonstrates the a2 invariance the pure math describes. The central project to me would be the Crystal Atlas program and Asimyth game proposal. Over time, I also intend to include additional derivative and exploratory visionary roadmaps, vibecoded sketches, and proposed real-world projects and applications. In the meantime, I hope what's available so far inspires your own projects and considerations.  
 
 More than a toy, far from its full potential. 
 
